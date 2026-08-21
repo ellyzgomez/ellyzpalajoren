@@ -113,13 +113,10 @@ body {
   width: 100%;
   min-height: 100vh;
   padding: 0;
-  padding-left: 1in;
-  padding-right: 0.5in;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   background: var(--canvas-bg);
-  box-sizing: border-box;
 }
 
 .magazine-container {
