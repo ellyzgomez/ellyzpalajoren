@@ -140,31 +140,31 @@ function initProjectModals() {
   const modal = document.getElementById('projectModal');
   const modalContent = document.getElementById('caseStudyModalContent');
   const closeBtn = document.getElementById('closeProjectModalBtn');
-  const projectCards = document.querySelectorAll('.feed-project-card');
+  const projectCards = document.querySelectorAll('.featured-project-card, .feed-project-card, [data-project-trigger]');
 
   const openProjectModal = (projectId) => {
     const project = PROJECTS_DATABASE[projectId];
     if (!project || !modalContent) return;
 
     modalContent.innerHTML = `
-      <div class="case-study-hero-img-wrap">
-        <img src="${project.image}" alt="${project.title}" class="case-study-hero-img">
+      <div class="modal-case-header">
+        <span class="modal-case-category">${project.category}</span>
+        <h2 class="modal-case-title">${project.title}</h2>
       </div>
-      <div class="case-study-meta-head">
-        <span class="dialog-badge">${project.category}</span>
-        <h2 class="case-study-title">${project.title}</h2>
-        <div class="case-study-tags-row">
-          ${project.tags.map(tag => `<span class="cs-tag-chip">${tag}</span>`).join('')}
-        </div>
+      <div class="modal-case-hero-img-wrap">
+        <img src="${project.image}" alt="${project.title}" class="modal-case-hero-img">
       </div>
-      <p class="case-study-desc-text">${project.description}</p>
-      <div class="case-study-buttons-row">
-        <a href="${project.prototypeUrl}" target="_blank" rel="noopener noreferrer" class="btn-cs-action primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      <p class="modal-case-desc">${project.description}</p>
+      <div class="modal-case-tags">
+        ${project.tags.map(tag => `<span class="modal-case-tag-chip">${tag}</span>`).join('')}
+      </div>
+      <div class="modal-case-actions">
+        <a href="${project.prototypeUrl}" target="_blank" rel="noopener noreferrer" class="btn-modal-action">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           <span>View Live Prototype</span>
         </a>
-        <a href="${project.sourceUrl}" target="_blank" rel="noopener noreferrer" class="btn-cs-action">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <a href="${project.sourceUrl}" target="_blank" rel="noopener noreferrer" class="btn-modal-action" style="background: var(--bg-frame); color: var(--text-pure); border: 1px solid var(--border-dark);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           <span>Source Code</span>
         </a>
       </div>
@@ -182,19 +182,9 @@ function initProjectModals() {
   };
 
   projectCards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      if (e.target.closest('.like-btn')) return;
-      const projectId = card.dataset.projectId;
-      openProjectModal(projectId);
-    });
-  });
-
-  // Activity Feed Clicks
-  const activityItems = document.querySelectorAll('.activity-item-row');
-  activityItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const trigger = item.dataset.projectTrigger;
-      if (trigger) openProjectModal(trigger);
+    card.addEventListener('click', () => {
+      const projectId = card.dataset.projectTrigger || card.dataset.projectId;
+      if (projectId) openProjectModal(projectId);
     });
   });
 
@@ -724,8 +714,8 @@ function initResumeButtons() {
     showToast('✓ Downloading Ellyz Gomez Resume (.docx)...');
   };
 
-  const btn = document.getElementById('downloadCvLeftBtn');
-  if (btn) btn.addEventListener('click', downloadResume);
+  const resumeBtns = document.querySelectorAll('.download-resume-btn, #downloadCvLeftBtn, #downloadResumeBtn');
+  resumeBtns.forEach(btn => btn.addEventListener('click', downloadResume));
 }
 
 /* --------------------------------------------------------------------------

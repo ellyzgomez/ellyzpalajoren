@@ -22,621 +22,441 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="social-portfolio-theme">
+<body class="editorial-portfolio-theme">
 
   <!-- Ambient Luxury Glow Backdrops -->
   <div class="ambient-glow glow-top-left"></div>
   <div class="ambient-glow glow-center-right"></div>
   <div class="ambient-glow glow-bottom-left"></div>
 
-  <!-- Browser Frame Wrapper -->
-  <div class="browser-window-frame">
+  <!-- Main Navigation Header -->
+  <header class="app-header-nav">
+    <div class="header-content-inner">
+      <a href="#home" class="nav-brand-logo">Ellyz Gomez</a>
 
-    <!-- Main Navigation Header -->
-    <header class="app-header-nav">
-      <div class="header-content-inner">
+      <!-- Center Nav Links -->
+      <nav class="center-nav-links" aria-label="Main Navigation">
+        <a href="#home" class="nav-item-link active">Home</a>
+        <a href="#projects" class="nav-item-link">Projects</a>
+        <a href="#skills" class="nav-item-link">Skills</a>
+        <a href="#credentials" class="nav-item-link">Credentials</a>
+        <a href="#contact" class="nav-item-link">Contact</a>
+      </nav>
 
-        <!-- Center Nav Links -->
-        <nav class="center-nav-links" aria-label="Main Navigation">
-          <a href="#home" class="nav-item-link active">HOME</a>
-          <a href="#skills" class="nav-item-link">SKILLS</a>
-          <a href="#projects" class="nav-item-link">PROJECTS</a>
-          <a href="#certificates" class="nav-item-link">CERTIFICATES</a>
-          <a href="#education" class="nav-item-link">EDUCATION</a>
-          <a href="#about" class="nav-item-link">ABOUT</a>
-          <a href="#contact" class="nav-item-link">CONTACT</a>
-        </nav>
+      <!-- Right Action: Theme Toggle & Mobile Hamburger -->
+      <div class="header-right-actions">
+        <button class="icon-tiny-btn header-theme-btn" id="headerThemeToggle" title="Toggle Light/Dark Theme"
+          aria-label="Toggle Theme">
+          <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
+          </svg>
+          <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
 
-        <!-- Right Action: Theme Toggle & Mobile Hamburger -->
-        <div class="header-right-actions">
-          <button class="icon-tiny-btn header-theme-btn" id="headerThemeToggle" title="Toggle Light/Dark Theme"
-            aria-label="Toggle Theme">
-            <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="12" r="4" />
-              <path d="M12 2v2" />
-              <path d="M12 20v2" />
-              <path d="m4.93 4.93 1.41 1.41" />
-              <path d="m17.66 17.66 1.41 1.41" />
-              <path d="M2 12h2" />
-              <path d="M20 12h2" />
-              <path d="m6.34 17.66-1.41 1.41" />
-              <path d="m19.07 4.93-1.41 1.41" />
-            </svg>
-            <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-            </svg>
-          </button>
-
-          <!-- Mobile Hamburger Toggle -->
-          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Mobile Menu">
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Mobile Menu">
+          <span></span>
+          <span></span>
+        </button>
       </div>
-    </header>
 
-    <!-- Main 3-Column Social Portfolio Dashboard Body -->
-    <main class="dashboard-main-layout">
+    </div>
+  </header>
 
-      <!-- ===================================================================== -->
-      <!-- LEFT COLUMN: FLOATING CREATOR / EXPANDED PROFILE CARD                 -->
-      <!-- ===================================================================== -->
-      <aside class="col-left-sidebar">
+  <!-- Centered Single-Column Main Layout Container -->
+  <main class="page-main-container">
 
-        <div class="creator-preview-card" id="leftCreatorCard">
-
-          <!-- Glowing Avatar Box -->
-          <div class="creator-avatar-container">
-            <div class="avatar-glow-ring">
-              <img src="assets/hero-portrait.png" alt="Ellyz Gomez" class="avatar-portrait-img">
-            </div>
+    <!-- ===================================================================== -->
+    <!-- 1. HERO SECTION                                                       -->
+    <!-- ===================================================================== -->
+    <section class="portfolio-section hero-layout-section feed-section-block" id="home">
+      <div class="hero-flex-wrapper">
+        
+        <!-- Left: Profile Avatar Box -->
+        <div class="hero-avatar-column">
+          <div class="hero-avatar-frame">
+            <img src="assets/hero-portrait.png" alt="Ellyz Gomez" class="hero-portrait-photo">
           </div>
-
-          <!-- Creator Details -->
-          <div class="creator-meta-block">
-            <div class="creator-name-row">
-              <h2 class="creator-full-name">Ellyz Gomez</h2>
-            </div>
-
-            <p class="creator-short-bio">
-              Open for Internship opportunities in <span class="text-pink-accent">UI Design</span>.
-            </p>
-
-            <div class="card-cv-action-row">
-              <button class="btn-inline-cv" id="downloadCvLeftBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" x2="12" y1="15" y2="3" />
-                </svg>
-                <span>Download Resume</span>
-              </button>
-            </div>
-          </div>
-
+          <div class="hero-avatar-caption">Ellyz Gomez</div>
         </div>
-      </aside>
 
-      <!-- ===================================================================== -->
-      <!-- CENTER COLUMN: MAIN IN-PAGE SECTIONS (Home, Skills, Projects, Certs, Edu, About, Contact) -->
-      <!-- ===================================================================== -->
-      <div class="col-center-feed">
-
-        <!-- =================================================================== -->
-        <!-- 1. HOME SECTION                                                     -->
-        <!-- =================================================================== -->
-        <section class="feed-section-block" id="home">
-
-          <div class="feed-header-profile-block">
-
-            <div class="profile-header-main-row">
-              <!-- Left: Avatar, Name & Social Icons Matrix -->
-              <div class="profile-avatar-social-col">
-                <div class="profile-main-avatar-wrap">
-                  <div class="avatar-ring-large">
-                    <img src="assets/hero-portrait.png" alt="Ellyz Gomez" class="avatar-img-large">
-                  </div>
-                </div>
-
-                <div class="profile-title-row">
-                  <h1 class="profile-hero-name">Ellyz Gomez</h1>
-                </div>
-
-                <div class="profile-connect-block">
-                  <div class="social-icons-matrix center-social-matrix">
-                    <a href="https://www.instagram.com/elyzgmz?igsi=MXV2YnJvN2VucWt1bg==" target="_blank"
-                      rel="noopener noreferrer" class="social-matrix-btn" aria-label="Instagram"
-                      title="Instagram — @elyzgmz">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                      </svg>
-                    </a>
-                    <a href="https://github.com/ellyzgomez" target="_blank" rel="noopener noreferrer"
-                      class="social-matrix-btn" aria-label="GitHub" title="GitHub — ellyzgomez">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                          d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                      </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/gomez-ellyz-m?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                      target="_blank" rel="noopener noreferrer" class="social-matrix-btn" aria-label="LinkedIn"
-                      title="LinkedIn — Ellyz Gomez">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                        <rect width="4" height="12" x="2" y="9" />
-                        <circle cx="4" cy="4" r="2" />
-                      </svg>
-                    </a>
-                    <a href="https://www.facebook.com/ellyz.m.gomez" target="_blank" rel="noopener noreferrer"
-                      class="social-matrix-btn" aria-label="Facebook" title="Facebook — Ellyz Gomez">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Right: Bio Content -->
-              <div class="profile-main-text-col">
-                <p class="profile-hero-bio">
-                  A motivated and responsible 4th-year Information Technology Student seeking an OJT opportunity to apply my academic knowledge and develop my technical skills through hands-on experience. I am eager to learn from industry professionals, contribute to the organization, and strengthen my communication, teamwork, and problem solving skills in preparation for my future job in the IT industry.
-                </p>
-              </div>
-            </div>
-
+        <!-- Right: Headline, Bio & Action Buttons -->
+        <div class="hero-content-column">
+          <div class="hero-status-pill">
+            <span class="status-pulse-dot"></span>
+            <span>Open for internship opportunities in UI Design</span>
           </div>
 
-        </section>
+          <h1 class="hero-main-headline">
+            4th-year IT student building clean, usable interfaces.
+          </h1>
 
-        <!-- =================================================================== -->
-        <!-- 2. SKILLS SECTION                                                   -->
-        <!-- =================================================================== -->
-        <section class="feed-section-block" id="skills">
-          <div class="feed-card-container skills-showcase-card">
-            <div class="section-title-bar">
-              <h2 class="section-heading-title">Technical & Professional Skills</h2>
-              <p class="section-sub-desc">
-                A breakdown of the programming languages, productivity tools, and soft skills I have developed through
-                my academic coursework and practical projects:
-              </p>
-            </div>
+          <p class="hero-bio-paragraph">
+            A motivated and responsible 4th-year Information Technology Student seeking an OJT opportunity to apply my academic knowledge and develop my technical skills through hands-on experience. I am eager to learn from industry professionals, contribute to a team, and strengthen my communication, teamwork, and problem solving skills ahead of my first role in tech.
+          </p>
 
-            <div class="skills-structured-group">
+          <div class="hero-actions-row">
+            <button class="btn-primary-action download-resume-btn" id="downloadCvLeftBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" x2="12" y1="15" y2="3" />
+              </svg>
+              <span>Download resume</span>
+            </button>
 
-              <!-- 1. DEVELOPMENT -->
-              <div class="skills-category-row">
-                <div class="category-heading-bar">
-                  <span class="accent-bar-indicator"></span>
-                  <h4 class="category-caps-title">DEVELOPMENT</h4>
-                </div>
-                <div class="skills-pill-collection">
-                  <span class="skill-tag-pill">HTML</span>
-                  <span class="skill-tag-pill">CSS</span>
-                  <span class="skill-tag-pill">JavaScript</span>
-                  <span class="skill-tag-pill">React</span>
-                  <span class="skill-tag-pill">Node.js</span>
-                  <span class="skill-tag-pill">PHP</span>
-                </div>
-              </div>
+            <a href="#projects" class="btn-secondary-action">
+              <span>View projects</span>
+            </a>
 
-              <!-- 2. DESIGN & TOOLS -->
-              <div class="skills-category-row">
-                <div class="category-heading-bar">
-                  <span class="accent-bar-indicator"></span>
-                  <h4 class="category-caps-title">DESIGN & TOOLS</h4>
-                </div>
-                <div class="skills-pill-collection">
-                  <span class="skill-tag-pill">Canva</span>
-                  <span class="skill-tag-pill">Video Editing</span>
-                  <span class="skill-tag-pill">Microsoft Office</span>
-                  <span class="skill-tag-pill">Google Workspace</span>
-                </div>
-              </div>
-
-              <!-- 3. SOFT SKILLS -->
-              <div class="skills-category-row">
-                <div class="category-heading-bar">
-                  <span class="accent-bar-indicator"></span>
-                  <h4 class="category-caps-title">SOFT SKILLS</h4>
-                </div>
-                <div class="skills-pill-collection">
-                  <span class="skill-tag-pill">Time Management</span>
-                  <span class="skill-tag-pill">Collaborative</span>
-                  <span class="skill-tag-pill">Creativity</span>
-                  <span class="skill-tag-pill">Communication Skills</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        <!-- =================================================================== -->
-        <!-- 3. PROJECTS SECTION                                                 -->
-        <!-- =================================================================== -->
-        <section class="feed-section-block" id="projects">
-          <div class="feed-card-container projects-showcase-container">
-            <div class="section-title-bar">
-              <h2 class="section-heading-title">Projects</h2>
-            </div>
-
-            <div class="projects-empty-state-card">
-              <div class="empty-state-icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m18 16 4-4-4-4"/>
-                  <path d="m6 8-4 4 4 4"/>
-                  <path d="m14.5 4-5 16"/>
-                </svg>
-              </div>
-              <h3 class="empty-state-heading">Projects in Progress</h3>
-              <p class="empty-state-desc">
-                Currently curating and building case studies for upcoming web applications, UI/UX designs, and technical systems. Stay tuned for new releases!
-              </p>
-              <div class="empty-state-actions">
-                <a href="#contact" class="btn-rose-pill btn-empty-contact">
-                  <span>Get in Touch for Inquiries</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- =================================================================== -->
-        <!-- 4. CERTIFICATES SECTION                                             -->
-        <!-- =================================================================== -->
-        <section class="feed-section-block" id="certificates">
-          <div class="feed-card-container certs-section-card">
-            <div class="section-title-bar">
-              <h2 class="section-heading-title">Certificates</h2>
-            </div>
-
-            <div class="certs-stack-viewport">
-              <div class="stack-container" id="certificatesStack">
-                <!-- React Bits 3D Certificate Cards dynamically injected by JS -->
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- =================================================================== -->
-        <!-- 5. EDUCATION SECTION                                                -->
-        <!-- =================================================================== -->
-        <section class="feed-section-block" id="education">
-          <div class="feed-card-container">
-            <div class="section-title-bar">
-              <h2 class="section-heading-title">Education & Credentials</h2>
-            </div>
-
-            <div class="education-timeline-list">
-
-              <!-- 1. College / University -->
-              <div class="education-item-row is-current">
-                <div class="edu-content-col">
-                  <h3 class="edu-school-name">Quezon City University, Quezon City</h3>
-                  <p class="edu-degree-title">Bachelor of Science in Information Technology</p>
-                </div>
-                <div class="edu-date-badge">2023 — Present</div>
-              </div>
-
-              <!-- 2. Senior High School -->
-              <div class="education-item-row">
-                <div class="edu-content-col">
-                  <h3 class="edu-school-name">Datamex College of Saint Adeline, Fairview, Quezon City</h3>
-                  <p class="edu-degree-title">Accounting Business Management (With honors)</p>
-                </div>
-                <div class="edu-date-badge">2021 — 2023</div>
-              </div>
-
-              <!-- 3. High School -->
-              <div class="education-item-row">
-                <div class="edu-content-col">
-                  <h3 class="edu-school-name">Bagong Silangan High School, Quezon City</h3>
-                </div>
-                <div class="edu-date-badge">2017 — 2021</div>
-              </div>
-
-              <!-- 4. Elementary -->
-              <div class="education-item-row">
-                <div class="edu-content-col">
-                  <h3 class="edu-school-name">Pantay Elementary School, Antipolo</h3>
-                </div>
-                <div class="edu-date-badge">2012 — 2017</div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        <!-- =================================================================== -->
-        <!-- 6. ABOUT SECTION                                                    -->
-        <!-- =================================================================== -->
-        <section class="feed-section-block" id="about">
-          <div class="feed-card-container">
-            <div class="section-title-bar">
-              <h2 class="section-heading-title">About</h2>
-            </div>
-
-            <div class="about-paragraphs-block">
-              <p class="about-lead-p" style="margin-bottom: 8px; font-weight: 700; color: var(--text-pure);">
-                Information Technology student open for internship opportunities.
-              </p>
-              <p class="about-lead-p" style="margin-bottom: 0;">
-                Currently pursuing a <strong>Bachelor of Science in Information Technology</strong> at <strong>Quezon City University</strong> and actively <strong>Open for Internship opportunities</strong> in UI Design. Let's connect and build something impactful!
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- =================================================================== -->
-        <!-- 7. CONTACT SECTION                                                  -->
-        <!-- =================================================================== -->
-        <section class="feed-section-block" id="contact">
-          <div class="feed-card-container">
-            <div class="section-title-bar">
-              <h2 class="section-heading-title">Contact</h2>
-            </div>
-
-            <form class="glass-contact-form" id="contactForm">
-              <div class="form-row-group">
-                <div class="form-field">
-                  <label for="contactName" class="form-field-label">YOUR NAME</label>
-                  <input type="text" id="contactName" name="name" class="glass-input" placeholder="e.g. Juan Dela Cruz"
-                    required>
-                </div>
-                <div class="form-field">
-                  <label for="contactEmail" class="form-field-label">YOUR EMAIL</label>
-                  <input type="email" id="contactEmail" name="email" class="glass-input"
-                    placeholder="e.g. juan@example.com" required>
-                </div>
-              </div>
-
-              <div class="form-field">
-                <label for="contactMessage" class="form-field-label">YOUR MESSAGE</label>
-                <textarea id="contactMessage" name="message" class="glass-textarea" rows="4"
-                  placeholder="Tell me about your project, design ideas, or collaboration..." required></textarea>
-              </div>
-
-              <button type="submit" class="btn-rose-pill btn-submit-full" id="submitBtn">
+            <!-- Social Mini Icons -->
+            <div class="hero-social-links-group">
+              <a href="https://www.instagram.com/elyzgmz?igsi=MXV2YnJvN2VucWt1bg==" target="_blank"
+                rel="noopener noreferrer" class="social-mini-btn" aria-label="Instagram" title="Instagram — @elyzgmz">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" style="margin-right: 4px;">
-                  <line x1="22" y1="2" x2="11" y2="13" />
-                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                 </svg>
-                <span class="btn-text">SEND MESSAGE</span>
-              </button>
-            </form>
+              </a>
+
+              <a href="https://github.com/ellyzgomez" target="_blank" rel="noopener noreferrer"
+                class="social-mini-btn" aria-label="GitHub" title="GitHub — ellyzgomez">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                  <path d="M9 18c-4.51 2-5-2-7-2" />
+                </svg>
+              </a>
+
+              <a href="https://www.linkedin.com/in/gomez-ellyz-m?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                target="_blank" rel="noopener noreferrer" class="social-mini-btn" aria-label="LinkedIn"
+                title="LinkedIn — Ellyz Gomez">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect width="4" height="12" x="2" y="9" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+
+              <a href="https://www.facebook.com/ellyz.m.gomez" target="_blank" rel="noopener noreferrer"
+                class="social-mini-btn" aria-label="Facebook" title="Facebook — Ellyz Gomez">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </a>
+            </div>
           </div>
-        </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 2. FEATURED PROJECTS SECTION                                          -->
+    <!-- ===================================================================== -->
+    <section class="portfolio-section feed-section-block" id="projects">
+      <div class="section-heading-group">
+        <h2 class="section-title-text">Featured projects</h2>
+        <p class="section-subtitle-text">A few things I've designed and built recently.</p>
+      </div>
+
+      <div class="featured-projects-grid">
+        
+        <!-- Project 01 -->
+        <div class="featured-project-card interactive-project-trigger" data-project-trigger="chic-wear">
+          <div class="project-card-top-row">
+            <span class="project-index-number">01</span>
+          </div>
+          <div class="project-card-meta">
+            <span class="project-tag-category">UI Design</span>
+            <h3 class="project-item-title">Chic Wear Studio</h3>
+            <p class="project-item-desc">E-commerce design system for a fashion retailer.</p>
+          </div>
+        </div>
+
+        <!-- Project 02 -->
+        <div class="featured-project-card interactive-project-trigger" data-project-trigger="zenith-health">
+          <div class="project-card-top-row">
+            <span class="project-index-number">02</span>
+          </div>
+          <div class="project-card-meta">
+            <span class="project-tag-category">Mobile</span>
+            <h3 class="project-item-title">Zenith Health App</h3>
+            <p class="project-item-desc">Mobile screen prototypes for a wellness tracking app.</p>
+          </div>
+        </div>
+
+        <!-- Project 03 -->
+        <div class="featured-project-card interactive-project-trigger" data-project-trigger="luxe-interior">
+          <div class="project-card-top-row">
+            <span class="project-index-number">03</span>
+          </div>
+          <div class="project-card-meta">
+            <span class="project-tag-category">Web</span>
+            <h3 class="project-item-title">Aria Luxe Interior Studio</h3>
+            <p class="project-item-desc">Spatial UI layout for an interior design portfolio.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. TECHNICAL AND PROFESSIONAL SKILLS SECTION                          -->
+    <!-- ===================================================================== -->
+    <section class="portfolio-section feed-section-block" id="skills">
+      <div class="section-heading-group">
+        <h2 class="section-title-text">Technical and professional skills</h2>
+        <p class="section-subtitle-text">Tools and languages I've developed through coursework and practice.</p>
+      </div>
+
+      <div class="skills-categories-grid">
+
+        <!-- Column 1: Development -->
+        <div class="skill-category-block">
+          <div class="skill-category-header">
+            <span class="accent-bar-indicator"></span>
+            <h4 class="category-title">Development</h4>
+          </div>
+          <div class="skills-tags-wrap">
+            <span class="skill-tag-pill">HTML</span>
+            <span class="skill-tag-pill">CSS</span>
+            <span class="skill-tag-pill">JavaScript</span>
+            <span class="skill-tag-pill">React</span>
+            <span class="skill-tag-pill">Node.js</span>
+            <span class="skill-tag-pill">PHP</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Design and tools -->
+        <div class="skill-category-block">
+          <div class="skill-category-header">
+            <span class="accent-bar-indicator"></span>
+            <h4 class="category-title">Design and tools</h4>
+          </div>
+          <div class="skills-tags-wrap">
+            <span class="skill-tag-pill">Canva</span>
+            <span class="skill-tag-pill">Video editing</span>
+            <span class="skill-tag-pill">Microsoft Office</span>
+            <span class="skill-tag-pill">Google Workspace</span>
+          </div>
+        </div>
+
+        <!-- Column 3: Soft skills -->
+        <div class="skill-category-block">
+          <div class="skill-category-header">
+            <span class="accent-bar-indicator"></span>
+            <h4 class="category-title">Soft skills</h4>
+          </div>
+          <div class="skills-tags-wrap">
+            <span class="skill-tag-pill">Time management</span>
+            <span class="skill-tag-pill">Collaborative</span>
+            <span class="skill-tag-pill">Creativity</span>
+            <span class="skill-tag-pill">Communication</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. CERTIFICATES AND EDUCATION SECTION                                 -->
+    <!-- ===================================================================== -->
+    <section class="portfolio-section feed-section-block" id="credentials">
+      <div class="section-heading-group">
+        <h2 class="section-title-text">Certificates and education</h2>
+        <p class="section-subtitle-text">Credentials earned alongside my degree.</p>
+      </div>
+
+      <div class="credentials-two-column-grid">
+
+        <!-- Left Column: Certificates -->
+        <div class="credential-box-card">
+          <h3 class="credential-box-heading">Certificates</h3>
+          <div class="credential-entries-list">
+            
+            <div class="credential-entry-row">
+              <span class="entry-main-text">UI/UX Fundamentals</span>
+              <span class="entry-date-badge">2025</span>
+            </div>
+
+            <div class="credential-entry-row">
+              <span class="entry-main-text">Responsive Web Design</span>
+              <span class="entry-date-badge">2024</span>
+            </div>
+
+            <div class="credential-entry-row">
+              <span class="entry-main-text">Google Workspace Essentials</span>
+              <span class="entry-date-badge">2024</span>
+            </div>
+
+            <div class="credential-entry-row">
+              <span class="entry-main-text">Cisco Introduction to Cybersecurity</span>
+              <span class="entry-date-badge">2024</span>
+            </div>
+
+            <div class="credential-entry-row">
+              <span class="entry-main-text">Canva Graphic Design Essentials</span>
+              <span class="entry-date-badge">2023</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Column: Education -->
+        <div class="credential-box-card">
+          <h3 class="credential-box-heading">Education</h3>
+          <div class="credential-entries-list">
+
+            <div class="credential-entry-row">
+              <span class="entry-main-text">BS Information Technology (Quezon City University)</span>
+              <span class="entry-date-badge">2023 — Present</span>
+            </div>
+
+            <div class="credential-entry-row">
+              <span class="entry-main-text">Datamex College of Saint Anthony</span>
+              <span class="entry-date-badge">2021 — 2023</span>
+            </div>
+
+            <div class="credential-entry-row">
+              <span class="entry-main-text">Bagong Silangan High School</span>
+              <span class="entry-date-badge">2017 — 2021</span>
+            </div>
+
+            <div class="credential-entry-row">
+              <span class="entry-main-text">Pantay Elementary School, Antipolo</span>
+              <span class="entry-date-badge">2012 — 2017</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. LET'S WORK TOGETHER / CONTACT SECTION                              -->
+    <!-- ===================================================================== -->
+    <section class="portfolio-section contact-footer-section feed-section-block" id="contact">
+      <div class="contact-dual-wrapper">
+        
+        <!-- Left: Big Title & Direct Contact Channels -->
+        <div class="contact-left-col">
+          <h2 class="contact-huge-headline">Let's work together.</h2>
+          
+          <div class="contact-channels-list">
+            <a href="mailto:ellyzpalajoren62@gmail.com" class="contact-channel-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              <span>ellyzpalajoren62@gmail.com</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/gomez-ellyz-m?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="contact-channel-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              <span>linkedin.com/in/gomez-ellyz-m</span>
+            </a>
+
+            <a href="https://github.com/ellyzgomez" target="_blank" rel="noopener noreferrer" class="contact-channel-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                <path d="M9 18c-4.51 2-5-2-7-2"/>
+              </svg>
+              <span>github.com/ellyzgomez</span>
+            </a>
+
+            <a href="https://www.facebook.com/ellyz.m.gomez" target="_blank" rel="noopener noreferrer" class="contact-channel-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+              <span>facebook.com/ellyz.m.gomez</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Contact Message Form -->
+        <div class="contact-right-col">
+          <form class="glass-contact-form" id="contactForm">
+            <div class="form-row-group">
+              <div class="form-field">
+                <label for="contactName" class="form-field-label">YOUR NAME</label>
+                <input type="text" id="contactName" name="name" class="glass-input" placeholder="e.g. Juan Dela Cruz" required>
+              </div>
+              <div class="form-field">
+                <label for="contactEmail" class="form-field-label">YOUR EMAIL</label>
+                <input type="email" id="contactEmail" name="email" class="glass-input" placeholder="e.g. juan@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="contactMessage" class="form-field-label">YOUR MESSAGE</label>
+              <textarea id="contactMessage" name="message" class="glass-textarea" rows="3" placeholder="Tell me about your project, design ideas, or internship collaboration..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-rose-pill btn-submit-full" id="submitBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px;">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+              <span class="btn-text">SEND MESSAGE</span>
+            </button>
+          </form>
+        </div>
 
       </div>
 
-      <!-- ===================================================================== -->
-      <!-- RIGHT COLUMN: SIDEBAR WIDGETS (SUGGESTIONS, ACTIVITY, SOCIAL)         -->
-      <!-- ===================================================================== -->
-      <aside class="col-right-sidebar">
-
-        <!-- Widget 1: Suggested Creatives -->
-        <div class="sidebar-glass-widget suggested-creatives-widget">
-          <div class="widget-header">
-            <h3 class="widget-title">Suggested Creatives</h3>
-          </div>
-
-          <div class="suggested-users-list">
-
-            <!-- User 1 -->
-            <div class="suggested-user-row">
-              <div class="user-avatar-mini-ring fallback-avatar avatar-gold">
-                <span>VS</span>
-              </div>
-              <div class="user-info-text">
-                <div class="user-name-line">
-                  <span class="user-display-name">Verve Studio</span>
-                </div>
-                <span class="user-handle">@vervestudio</span>
-              </div>
-              <button class="btn-mini-follow" aria-label="Follow user">Follow</button>
-            </div>
-
-            <!-- User 2 -->
-            <div class="suggested-user-row">
-              <div class="user-avatar-mini-ring fallback-avatar avatar-purple">
-                <span>FC</span>
-              </div>
-              <div class="user-info-text">
-                <div class="user-name-line">
-                  <span class="user-display-name">Flarlia Creative</span>
-                </div>
-                <span class="user-handle">@flarliacreative</span>
-              </div>
-              <button class="btn-mini-follow" aria-label="Follow user">Follow</button>
-            </div>
-
-            <!-- User 3 -->
-            <div class="suggested-user-row">
-              <div class="user-avatar-mini-ring fallback-avatar avatar-bronze">
-                <span>AL</span>
-              </div>
-              <div class="user-info-text">
-                <div class="user-name-line">
-                  <span class="user-display-name">Aria Luxe Studio</span>
-                </div>
-                <span class="user-handle">@arialuxe</span>
-              </div>
-              <button class="btn-mini-follow" aria-label="Follow user">Follow</button>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Widget 2: Discover & Activity -->
-        <div class="sidebar-glass-widget activity-feed-widget">
-          <div class="widget-header-tabs">
-            <button class="activity-tab-btn active" data-act-tab="activity">Discover & Activity</button>
-            <button class="activity-tab-btn" data-act-tab="tabs">Tabbs</button>
-          </div>
-
-          <div class="activity-items-list" id="activityList">
-
-            <!-- Item 1 -->
-            <div class="activity-item-row" data-project-trigger="chic-wear">
-              <div class="activity-icon-thumb icon-box-pink">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2">
-                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-                  <path d="M3 6h18" />
-                  <path d="M16 10a4 4 0 0 1-8 0" />
-                </svg>
-              </div>
-              <div class="activity-text-col">
-                <div class="activity-head-line">
-                  <span class="act-name">Chic Wear Studio</span>
-                </div>
-                <p class="act-detail">Published E-commerce Design System</p>
-                <span class="act-timestamp">10 hours ago</span>
-              </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="activity-item-row" data-project-trigger="zenith-health">
-              <div class="activity-icon-thumb icon-box-blue">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2">
-                  <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
-                  <path d="M12 18h.01" />
-                </svg>
-              </div>
-              <div class="activity-text-col">
-                <div class="activity-head-line">
-                  <span class="act-name">Zenith Health App</span>
-                </div>
-                <p class="act-detail">Updated 3 Mobile Screen Prototypes</p>
-                <span class="act-timestamp">20 hours ago</span>
-              </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="activity-item-row" data-project-trigger="luxe-interior">
-              <div class="activity-icon-thumb icon-box-dark">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2">
-                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                  <polyline points="9 22 9 12 15 12 15 22" />
-                </svg>
-              </div>
-              <div class="activity-text-col">
-                <div class="activity-head-line">
-                  <span class="act-name">Aria luxe Interior Studio</span>
-                </div>
-                <p class="act-detail">Showcased Spatial UI Architecture</p>
-                <span class="act-timestamp">14 hours ago</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </aside>
-
-    </main>
-
-    <!-- App Bottom Footer Bar -->
-    <footer class="app-bottom-footer">
-      <div class="footer-left-copy">
+      <!-- App Bottom Footer Bar -->
+      <div class="app-bottom-footer-inline">
         <span>Copyright &copy; 2026 Ellyz Gomez. All Rights Reserved.</span>
       </div>
-    </footer>
+    </section>
 
-  </div>
+  </main>
 
-  <!-- ========================================================================= -->
-  <!-- MODAL 1: INTERACTIVE PROJECT CASE STUDY MODAL                             -->
-  <!-- ========================================================================= -->
+  <!-- Interactive Project Case Study Modal -->
   <div class="modal-backdrop-blur" id="projectModal" aria-hidden="true" role="dialog">
     <div class="modal-glass-container project-case-study-dialog">
-
       <button class="modal-glass-close-btn" id="closeProjectModalBtn" aria-label="Close modal">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
-
-      <div class="case-study-body" id="caseStudyModalContent">
-        <!-- Dynamically injected via JavaScript -->
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- MODAL 2: STORY HIGHLIGHT VIEWER (Behind The Scenes & Wireframes)          -->
-  <!-- ========================================================================= -->
-  <div class="modal-backdrop-blur story-viewer-backdrop" id="storyViewerModal" aria-hidden="true" role="dialog">
-    <div class="story-viewer-dialog">
-
-      <!-- Progress Bar Matrix -->
-      <div class="story-progress-bar-wrap" id="storyProgressBar">
-        <div class="story-progress-segment active"></div>
-        <div class="story-progress-segment"></div>
-        <div class="story-progress-segment"></div>
-      </div>
-
-      <!-- Story Header -->
-      <div class="story-header-bar">
-        <div class="story-author-info">
-          <img src="assets/hero-portrait.png" alt="Ellyz" class="story-avatar">
-          <div>
-            <span class="story-author-name">Ellyz Gomez</span>
-            <span class="story-category-title" id="storyCategoryTitle">Design Projects</span>
-          </div>
-        </div>
-        <button class="modal-glass-close-btn story-close-btn" id="closeStoryViewerBtn" aria-label="Close story">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2.5">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Story Media Content -->
-      <div class="story-slide-viewport" id="storySlideViewport">
-        <!-- Dynamically filled by JS -->
-      </div>
-
-      <!-- Navigation Arrows -->
-      <button class="story-nav-btn prev" id="storyPrevBtn" aria-label="Previous Slide">‹</button>
-      <button class="story-nav-btn next" id="storyNextBtn" aria-label="Next Slide">›</button>
-
+      <div class="case-study-body" id="caseStudyModalContent"></div>
     </div>
   </div>
 
   <!-- Toast Notification Container -->
-  <div class="toast-container" id="toastContainer"></div>
+  <div class="toast-notification-container" id="toastContainer"></div>
 
-  <!-- Main JavaScript App Logic -->
+  <!-- Main JavaScript Logic -->
   <script src="main.js"></script>
-  <script>
-    if (window.lucide) {
-      lucide.createIcons();
-    }
-  </script>
 </body>
 
 </html>
