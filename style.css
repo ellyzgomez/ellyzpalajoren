@@ -96,6 +96,7 @@
   background: #ffffff !important;
   border: 1px solid #ded8dd !important;
   color: #111111 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
 }
 
 [data-theme="light"] .matrix-block {
@@ -754,20 +755,21 @@ body.social-portfolio-theme {
 .skills-pill-collection {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
   align-items: center;
 }
 
 .skill-tag-pill {
   font-family: var(--font-serif);
-  font-size: 0.76rem;
+  font-size: 0.70rem;
   font-weight: 600;
+  line-height: 1.15;
   color: var(--text-primary);
   background: var(--bg-card);
   border: 1px solid var(--border-dark);
-  padding: 4px 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 3px 7px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -780,7 +782,7 @@ body.social-portfolio-theme {
   border-color: var(--pink-hot);
   color: var(--pink-hot);
   transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(255, 105, 180, 0.2);
+  box-shadow: 0 2px 6px rgba(255, 105, 180, 0.25);
 }
 
 /* Projects Section & Empty State Showcase */
