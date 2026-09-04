@@ -219,15 +219,15 @@ const STORY_DATA = {
     ]
   },
   'awards': {
-    title: 'Academic & Project Recognitions',
+    title: 'Certifications & Recognitions',
     slides: [
       {
-        image: 'assets/certificate-preview.jpg',
-        caption: 'Quezon City University: Academic Excellence in Information Technology & Systems Engineering.'
+        image: 'assets/cisco-network-addressing.png',
+        caption: 'Cisco Networking Academy • Network Addressing and Basic Troubleshooting Certified.'
       },
       {
         image: 'assets/canva-essentials.png',
-        caption: 'Canva Certified Design Specialist • Graphic Design & Visual Communication.'
+        caption: 'Canva Design School • Canva Essentials Certified Specialist.'
       }
     ]
   },
@@ -814,45 +814,48 @@ function showToast(message) {
    10. CERTIFICATE FOLDER MODAL VIEWER
    -------------------------------------------------------------------------- */
 const CERTIFICATES_DATABASE = {
-  'ui-ux': {
-    title: 'UI/UX Fundamentals & Systems Design',
-    issuer: 'Quezon City University — College of Computer Studies',
-    date: '2025',
-    image: 'assets/certificate-preview.jpg',
-    tag: 'UI/UX DESIGN & ENGINEERING',
-    description: 'Specialized certification in user experience design, information architecture, wireframing, design systems, and responsive web aesthetics.'
-  },
-  'responsive-web': {
-    title: 'Responsive Web Design & Prototyping',
-    issuer: 'Web Development Certification',
-    date: '2024',
-    image: 'assets/cisco-network-addressing.png',
-    tag: 'FRONTEND DEVELOPMENT',
-    description: 'Certified in modern responsive web architecture, mobile-first design, semantic HTML5/CSS3 layouts, and cross-browser accessibility.'
-  },
-  'google-workspace': {
-    title: 'Google Workspace & Cloud Productivity Essentials',
-    issuer: 'Google Workspace Training',
-    date: '2024',
+  'canva-essentials': {
+    title: 'Canva Essentials',
+    issuer: 'Canva Design School',
+    date: 'August 21, 2026',
+    credentialId: 'c701b2',
     image: 'assets/canva-essentials.png',
-    tag: 'CLOUD PRODUCTIVITY',
-    description: 'Proficiency in cloud collaboration tools, document workflow automation, spreadsheet modeling, and enterprise productivity software.'
+    tag: 'DESIGN & DIGITAL CREATION',
+    description: 'Official Certificate of Completion awarded to Ellyz Gomez by Canva Design School for completing the Canva Essentials course.'
   },
-  'cisco-cyber': {
-    title: 'Cisco: Introduction to Cybersecurity & Threat Management',
-    issuer: 'Cisco Networking Academy',
-    date: '2024',
-    image: 'assets/cisco-cyber-threat.png',
-    tag: 'CYBERSECURITY',
-    description: 'Comprehensive training in network security fundamentals, cyber defense principles, threat prevention strategies, and data protection integrity.'
-  },
-  'canva-design': {
-    title: 'Canva Graphic Design Essentials',
-    issuer: 'Canva Design Academy',
-    date: '2023',
+  'canva-graphic-design': {
+    title: 'Graphic Design Essentials',
+    issuer: 'Canva Design School',
+    date: 'August 21, 2026',
+    credentialId: 'aba828',
     image: 'assets/canva-graphic-design.png',
-    tag: 'GRAPHIC DESIGN & BRANDING',
-    description: 'Specialized certification in visual communication, branding asset creation, digital typography, color harmony, and marketing layout composition.'
+    tag: 'GRAPHIC DESIGN & CREATIVE',
+    description: 'Official Certificate of Completion awarded to Ellyz Gomez by Canva Design School for completing the Graphic Design Essentials training course.'
+  },
+  'cisco-cyber-threat': {
+    title: 'Cyber Threat Management',
+    issuer: 'Cisco Networking Academy',
+    date: 'June 13, 2025',
+    image: 'assets/cisco-cyber-threat.png',
+    tag: 'CYBERSECURITY & DEFENSE',
+    description: 'Awarded to Ellyz Gomez for successfully completing the Cyber Threat Management course through the Cisco Networking Academy program.'
+  },
+  'cisco-network-addressing': {
+    title: 'Network Addressing and Basic Troubleshooting',
+    issuer: 'Cisco Networking Academy',
+    date: 'May 31, 2025',
+    image: 'assets/cisco-network-addressing.png',
+    tag: 'NETWORKING & TROUBLESHOOTING',
+    description: 'Student-level credential awarded to Ellyz Gomez for successfully completing the Network Addressing and Basic Troubleshooting course under Cisco Networking Academy.'
+  },
+  'cisco-packet-tracer': {
+    title: 'Getting Started with Cisco Packet Tracer',
+    issuer: 'Cisco Networking Academy',
+    date: 'June 09, 2025',
+    credentialId: '6e950d61-796d-4155-9a10-dfde0a3b6934',
+    image: 'assets/cisco-packet-tracer.png',
+    tag: 'SIMULATION & TOPOLOGY',
+    description: 'Awarded to Ellyz Gomez for successfully completing the Getting Started with Cisco Packet Tracer course through the Cisco Networking Academy program.'
   }
 };
 
@@ -870,7 +873,7 @@ function initCertificatesModal() {
       <div class="modal-cert-header">
         <span class="modal-cert-tag">${cert.tag} • ${cert.date}</span>
         <h2 class="modal-cert-title">${cert.title}</h2>
-        <span class="modal-cert-issuer">${cert.issuer}</span>
+        <span class="modal-cert-issuer">${cert.issuer} ${cert.credentialId ? `• ID: ${cert.credentialId}` : ''}</span>
       </div>
       <div class="modal-cert-img-wrap">
         <img src="${cert.image}" alt="${cert.title}" class="modal-cert-img">
@@ -879,7 +882,7 @@ function initCertificatesModal() {
       <div class="modal-cert-folder-tabs">
         ${Object.keys(CERTIFICATES_DATABASE).map(k => `
           <button class="cert-folder-tab-pill ${k === certKey ? 'active' : ''}" data-folder-key="${k}">
-            ${CERTIFICATES_DATABASE[k].title.split('&')[0].trim()}
+            ${CERTIFICATES_DATABASE[k].title}
           </button>
         `).join('')}
       </div>
