@@ -256,6 +256,28 @@ body.editorial-portfolio-theme {
   gap: 10px;
 }
 
+.btn-header-resume {
+  background: var(--pink-gradient);
+  border: none;
+  color: #000000;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 3px 10px var(--pink-glow);
+  transition: var(--transition-fast);
+}
+
+.btn-header-resume:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px var(--pink-glow);
+}
+
 .header-theme-btn {
   width: 28px;
   height: 28px;
