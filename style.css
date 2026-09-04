@@ -857,27 +857,29 @@ body.editorial-portfolio-theme {
 }
 
 .btn-rose-pill.btn-submit-full {
-  width: 100%;
+  width: auto;
+  align-self: center;
   background: var(--pink-gradient);
   border: none;
   color: #000000;
   font-family: var(--font-serif);
   font-size: 12px;
   font-weight: 700;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 8px 26px;
+  border-radius: 6px;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  box-shadow: 0 4px 14px var(--pink-glow);
+  box-shadow: 0 3px 12px var(--pink-glow);
   transition: var(--transition-fast);
+  margin-top: 4px;
 }
 
 .btn-rose-pill.btn-submit-full:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px var(--pink-glow);
+  box-shadow: 0 5px 16px var(--pink-glow);
 }
 
 .app-bottom-footer-inline {
