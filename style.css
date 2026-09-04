@@ -92,6 +92,7 @@
 
 [data-theme="light"] .btn-secondary-action,
 [data-theme="light"] .social-mini-btn,
+[data-theme="light"] .btn-header-resume,
 [data-theme="light"] .header-theme-btn {
   background: #ffffff !important;
   border: 1px solid #ded8dd !important;
@@ -264,9 +265,9 @@ body.editorial-portfolio-theme {
 }
 
 .btn-header-resume {
-  background: var(--pink-gradient);
-  border: none;
-  color: #000000;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  color: var(--text-pure);
   font-family: var(--font-serif);
   font-size: 12px;
   font-weight: 700;
@@ -275,14 +276,24 @@ body.editorial-portfolio-theme {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  box-shadow: 0 3px 10px var(--pink-glow);
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.btn-header-resume svg {
+  color: var(--pink-hot);
   transition: var(--transition-fast);
 }
 
 .btn-header-resume:hover {
+  border-color: var(--pink-hot);
+  color: var(--pink-hot);
+  background: rgba(255, 105, 180, 0.08);
   transform: translateY(-1px);
-  box-shadow: 0 5px 14px var(--pink-glow);
+}
+
+.btn-header-resume:hover svg {
+  transform: translateY(1px);
 }
 
 .header-theme-btn {
