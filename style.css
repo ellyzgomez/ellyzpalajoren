@@ -702,6 +702,87 @@ body.social-portfolio-theme {
   border-color: transparent;
 }
 
+/* --------------------------------------------------------------------------
+   8. SKILLS SECTION: Categorized Matrix & Compact Skill Badges
+   -------------------------------------------------------------------------- */
+.skills-showcase-card {
+  padding: 22px 26px;
+}
+
+.section-sub-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+.skills-structured-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.skills-category-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-heading-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accent-bar-indicator {
+  width: 3px;
+  height: 13px;
+  background: var(--pink-hot);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.category-caps-title {
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-pure);
+}
+
+.skills-pill-collection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.skill-tag-pill {
+  font-family: var(--font-serif);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  padding: 4px 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.skill-tag-pill:hover {
+  border-color: var(--pink-hot);
+  color: var(--pink-hot);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(255, 105, 180, 0.2);
+}
+
 /* Projects Section & Empty State Showcase */
 .projects-empty-state-card {
   background: var(--bg-frame);
