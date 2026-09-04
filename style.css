@@ -169,6 +169,7 @@ body.social-portfolio-theme {
   font-family: var(--font-serif);
   background-color: var(--bg-main);
   color: var(--text-primary);
+  font-size: 12px;
   line-height: 1.6;
   min-height: 100vh;
   margin: 0;
@@ -268,7 +269,7 @@ body.social-portfolio-theme {
 .nav-item-link {
   text-decoration: none;
   color: var(--text-secondary);
-  font-size: 0.78rem;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -438,14 +439,14 @@ body.social-portfolio-theme {
 
 .creator-full-name {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 13px;
   font-weight: 700;
   color: var(--text-pure);
   letter-spacing: -0.01em;
 }
 
 .creator-short-bio {
-  font-size: 0.81rem;
+  font-size: 12px;
   color: var(--text-secondary);
   line-height: 1.55;
   margin-bottom: 16px;
@@ -463,10 +464,10 @@ body.social-portfolio-theme {
   border: 1px solid var(--border-dark);
   color: var(--pink-hot);
   font-family: var(--font-serif);
-  font-size: 0.85rem;
+  font-size: 12px;
   font-weight: 700;
-  padding: 7px 16px;
-  border-radius: 8px;
+  padding: 6px 14px;
+  border-radius: 6px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -497,7 +498,7 @@ body.social-portfolio-theme {
   border: 1px solid var(--border-dark);
   color: var(--text-primary);
   font-family: var(--font-serif);
-  font-size: 0.82rem;
+  font-size: 12px;
   font-weight: 700;
   padding: 8px 6px;
   border-radius: 8px;
@@ -633,7 +634,7 @@ body.social-portfolio-theme {
 
 .profile-hero-name {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text-pure);
   letter-spacing: -0.01em;
@@ -651,9 +652,9 @@ body.social-portfolio-theme {
 }
 
 .profile-hero-bio {
-  font-size: 0.835rem;
+  font-size: 12px;
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.6;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -663,9 +664,9 @@ body.social-portfolio-theme {
 }
 
 .about-lead-p {
-  font-size: 0.85rem;
+  font-size: 12px;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.65;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -687,9 +688,9 @@ body.social-portfolio-theme {
 }
 
 .center-social-matrix .social-matrix-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
   background: var(--bg-frame);
   border: 1px solid var(--border-dark);
   color: var(--text-secondary);
@@ -715,16 +716,16 @@ body.social-portfolio-theme {
 }
 
 .section-sub-desc {
-  font-size: 0.84rem;
+  font-size: 12px;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.5;
   margin-top: 4px;
 }
 
 .skills-structured-group {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   margin-top: 14px;
 }
 
@@ -750,7 +751,7 @@ body.social-portfolio-theme {
 
 .category-caps-title {
   font-family: var(--font-serif);
-  font-size: 0.82rem;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--text-pure);
@@ -765,13 +766,13 @@ body.social-portfolio-theme {
 
 .skill-tag-pill {
   font-family: var(--font-serif);
-  font-size: 0.70rem;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.15;
   color: var(--text-primary);
   background: var(--bg-card);
   border: 1px solid var(--border-dark);
-  padding: 3px 7px;
+  padding: 3px 8px;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   display: inline-flex;
@@ -794,13 +795,13 @@ body.social-portfolio-theme {
   background: var(--bg-frame);
   border: 1px dashed var(--border-dark);
   border-radius: 14px;
-  padding: 44px 24px;
+  padding: 36px 24px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   transition: var(--transition-smooth);
 }
 
@@ -810,37 +811,37 @@ body.social-portfolio-theme {
 }
 
 .empty-state-icon-wrap {
-  width: 60px;
-  height: 60px;
-  border-radius: 14px;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
   background: var(--pink-subtle);
   border: 1px solid rgba(255, 105, 180, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--pink-hot);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .empty-state-heading {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 13px;
   font-weight: 700;
   color: var(--text-pure);
 }
 
 .empty-state-desc {
-  font-size: 0.92rem;
+  font-size: 12px;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.55;
   max-width: 520px;
-  margin: 0 auto 6px;
+  margin: 0 auto 4px;
 }
 
 .empty-state-actions .btn-empty-contact {
   text-decoration: none;
-  font-size: 0.82rem;
-  padding: 8px 24px;
+  font-size: 12px;
+  padding: 6px 20px;
 }
 
 /* Grid of Project Cards (Adaptive Columns) */
@@ -1028,7 +1029,7 @@ body.social-portfolio-theme {
 
 .edu-school-name {
   font-family: var(--font-serif);
-  font-size: 0.92rem;
+  font-size: 12px;
   font-weight: 700;
   color: var(--pink-hot);
   letter-spacing: -0.01em;
@@ -1036,7 +1037,7 @@ body.social-portfolio-theme {
 
 .edu-degree-title {
   font-family: var(--font-serif);
-  font-size: 0.86rem;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-pure);
   line-height: 1.35;
@@ -1044,18 +1045,18 @@ body.social-portfolio-theme {
 
 .edu-sub-note {
   font-family: var(--font-serif);
-  font-size: 0.78rem;
+  font-size: 12px;
   color: var(--text-secondary);
   line-height: 1.3;
 }
 
 .edu-date-badge {
   font-family: var(--font-serif);
-  font-size: 0.80rem;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-primary);
   white-space: nowrap;
-  padding: 4px 10px;
+  padding: 3px 8px;
   background: var(--bg-card);
   border: 1px solid var(--border-dark);
   border-radius: 6px;
@@ -1118,7 +1119,7 @@ body.social-portfolio-theme {
 
 .widget-title {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-pure);
 }
@@ -1138,8 +1139,8 @@ body.social-portfolio-theme {
 }
 
 .user-avatar-mini-ring {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
@@ -1149,7 +1150,7 @@ body.social-portfolio-theme {
 .fallback-avatar {
   background: #1e1e1e;
   color: var(--pink-hot);
-  font-size: 0.75rem;
+  font-size: 11px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -1168,7 +1169,7 @@ body.social-portfolio-theme {
 }
 
 .user-display-name {
-  font-size: 0.82rem;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-pure);
   white-space: nowrap;
@@ -1177,7 +1178,7 @@ body.social-portfolio-theme {
 }
 
 .user-handle {
-  font-size: 0.72rem;
+  font-size: 11px;
   color: var(--text-muted);
   display: block;
 }
@@ -1187,9 +1188,9 @@ body.social-portfolio-theme {
   border: 1px solid var(--border-dark);
   color: var(--pink-hot);
   font-family: var(--font-serif);
-  font-size: 0.72rem;
+  font-size: 11px;
   font-weight: 700;
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: 9999px;
   cursor: pointer;
   transition: var(--transition-fast);
@@ -1221,7 +1222,7 @@ body.social-portfolio-theme {
   border: none;
   color: var(--text-muted);
   font-family: var(--font-serif);
-  font-size: 0.84rem;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
   transition: var(--transition-fast);
@@ -1252,9 +1253,9 @@ body.social-portfolio-theme {
 }
 
 .activity-icon-thumb {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
   overflow: hidden;
   flex-shrink: 0;
   display: flex;
@@ -1265,8 +1266,8 @@ body.social-portfolio-theme {
 }
 
 .activity-icon-thumb svg {
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
 }
 
 .icon-box-blue {
@@ -1296,20 +1297,20 @@ body.social-portfolio-theme {
 }
 
 .act-name {
-  font-size: 0.8rem;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-pure);
 }
 
 .act-detail {
-  font-size: 0.74rem;
+  font-size: 11px;
   color: var(--text-secondary);
   line-height: 1.25;
   margin: 1px 0;
 }
 
 .act-timestamp {
-  font-size: 0.68rem;
+  font-size: 11px;
   color: var(--text-muted);
 }
 
@@ -1317,13 +1318,13 @@ body.social-portfolio-theme {
    9. Dialog Badges, Buttons & Skills Matrix
    -------------------------------------------------------------------------- */
 .dialog-badge {
-  font-size: 0.76rem;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--pink-hot);
   background: var(--pink-subtle);
   border: 1px solid rgba(255, 105, 180, 0.28);
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 20px;
   display: inline-block;
   margin-bottom: 8px;
@@ -1334,11 +1335,11 @@ body.social-portfolio-theme {
   background: var(--pink-gradient);
   color: #000000;
   font-family: var(--font-serif);
-  font-size: 0.88rem;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 10px 28px;
+  padding: 8px 22px;
   border-radius: 9999px;
   border: none;
   cursor: pointer;
@@ -1353,90 +1354,6 @@ body.social-portfolio-theme {
   transform: translateY(-2px);
   box-shadow: 0 6px 26px rgba(255, 105, 180, 0.6);
   filter: brightness(1.05);
-}
-
-/* --------------------------------------------------------------------------
-   9. SKILLS SECTION: Structured Group & Categorized Pills
-   -------------------------------------------------------------------------- */
-.section-sub-desc {
-  font-family: var(--font-serif);
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  line-height: 1.55;
-  margin-top: 6px;
-}
-
-.skills-structured-group {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.skills-category-row {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.skills-category-row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.category-heading-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.accent-bar-indicator {
-  width: 3.5px;
-  height: 14px;
-  background: var(--pink-hot);
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-
-.category-caps-title {
-  font-family: var(--font-serif);
-  font-size: 0.86rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--text-pure);
-  text-transform: uppercase;
-}
-
-.skills-pill-collection {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.skill-tag-pill {
-  background: var(--bg-frame);
-  border: 1px solid var(--border-dark);
-  color: var(--text-pure);
-  font-family: var(--font-serif);
-  font-size: 0.88rem;
-  font-weight: 700;
-  padding: 8px 18px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  transition: var(--transition-fast);
-  display: inline-block;
-  cursor: default;
-}
-
-.skill-tag-pill:hover {
-  background: var(--pink-gradient);
-  border-color: transparent;
-  color: #000000;
-  font-weight: 700;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px var(--pink-glow);
 }
 
 /* --------------------------------------------------------------------------
@@ -1520,21 +1437,25 @@ body.social-portfolio-theme {
 }
 
 .about-paragraphs-block {
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .about-lead-p {
-  font-size: 1.05rem;
+  font-size: 12px;
   color: var(--text-pure);
   line-height: 1.65;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .about-body-p {
-  font-size: 0.94rem;
+  font-size: 12px;
   color: var(--text-secondary);
   line-height: 1.65;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .about-highlights-grid {
@@ -1569,7 +1490,7 @@ body.social-portfolio-theme {
 
 .form-field-label {
   font-family: var(--font-serif);
-  font-size: 0.8rem;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--text-secondary);
@@ -1580,10 +1501,10 @@ body.social-portfolio-theme {
   background: var(--bg-frame);
   border: 1px solid var(--border-dark);
   border-radius: 8px;
-  padding: 12px 16px;
+  padding: 10px 14px;
   color: var(--text-pure);
   font-family: var(--font-serif);
-  font-size: 0.94rem;
+  font-size: 12px;
   transition: var(--transition-fast);
   width: 100%;
 }
@@ -1599,7 +1520,7 @@ body.social-portfolio-theme {
   width: auto;
   align-self: flex-start;
   padding: 8px 22px;
-  font-size: 0.8rem;
+  font-size: 12px;
   letter-spacing: 0.04em;
   gap: 6px;
 }
@@ -1616,7 +1537,7 @@ body.social-portfolio-theme {
 .direct-email-chip {
   color: var(--pink-hot);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 12px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -1627,7 +1548,7 @@ body.social-portfolio-theme {
 }
 
 .location-chip {
-  font-size: 0.85rem;
+  font-size: 12px;
   color: var(--text-muted);
 }
 
@@ -1645,7 +1566,7 @@ body.social-portfolio-theme {
 }
 
 .footer-left-copy {
-  font-size: 0.85rem;
+  font-size: 12px;
   color: var(--text-muted);
   text-align: center;
 }
