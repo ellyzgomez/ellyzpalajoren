@@ -984,6 +984,105 @@ body.social-portfolio-theme {
 }
 
 /* --------------------------------------------------------------------------
+   8.5. EDUCATION SECTION: Timeline & Degree Cards
+   -------------------------------------------------------------------------- */
+.education-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.education-item-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--bg-frame);
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
+  transition: var(--transition-fast);
+}
+
+.education-item-row:hover {
+  border-color: var(--pink-hot);
+  transform: translateX(2px);
+}
+
+.education-item-row.is-current {
+  background: rgba(255, 105, 180, 0.05);
+  border-color: var(--pink-hot);
+}
+
+.edu-content-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.edu-school-name {
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--pink-hot);
+  letter-spacing: -0.01em;
+}
+
+.edu-degree-title {
+  font-family: var(--font-serif);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-pure);
+  line-height: 1.35;
+}
+
+.edu-sub-note {
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+.edu-date-badge {
+  font-family: var(--font-serif);
+  font-size: 0.80rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  padding: 4px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: 6px;
+  align-self: flex-start;
+}
+
+[data-theme="light"] .education-item-row {
+  background: #ffffff !important;
+  border: 1px solid #ded8dd !important;
+}
+
+[data-theme="light"] .education-item-row.is-current {
+  background: #fdf5f9 !important;
+  border-color: var(--pink-hot) !important;
+}
+
+[data-theme="light"] .edu-school-name {
+  color: #1a73e8 !important;
+}
+
+[data-theme="light"] .edu-degree-title {
+  color: #111111 !important;
+}
+
+[data-theme="light"] .edu-date-badge {
+  background: #f8f3f6 !important;
+  border: 1px solid #ded8dd !important;
+  color: #111111 !important;
+}
+
+/* --------------------------------------------------------------------------
    8. RIGHT COLUMN: Sidebar Widgets (Suggestions, Activity)
    -------------------------------------------------------------------------- */
 .col-right-sidebar {
