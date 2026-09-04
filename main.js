@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. Initialize Core Interactive Components
   initProjectModals();
+  initCertificatesModal();
   initStoryViewer();
   initNavigation();
   initSocialInteractions();
@@ -807,4 +808,113 @@ function showToast(message) {
       if (toast.parentNode) toast.parentNode.removeChild(toast);
     }, 300);
   }, 3200);
+}
+
+/* --------------------------------------------------------------------------
+   10. CERTIFICATE FOLDER MODAL VIEWER
+   -------------------------------------------------------------------------- */
+const CERTIFICATES_DATABASE = {
+  'ui-ux': {
+    title: 'UI/UX Fundamentals & Systems Design',
+    issuer: 'Quezon City University — College of Computer Studies',
+    date: '2025',
+    image: 'assets/certificate-preview.jpg',
+    tag: 'UI/UX DESIGN & ENGINEERING',
+    description: 'Specialized certification in user experience design, information architecture, wireframing, design systems, and responsive web aesthetics.'
+  },
+  'responsive-web': {
+    title: 'Responsive Web Design & Prototyping',
+    issuer: 'Web Development Certification',
+    date: '2024',
+    image: 'assets/cisco-network-addressing.png',
+    tag: 'FRONTEND DEVELOPMENT',
+    description: 'Certified in modern responsive web architecture, mobile-first design, semantic HTML5/CSS3 layouts, and cross-browser accessibility.'
+  },
+  'google-workspace': {
+    title: 'Google Workspace & Cloud Productivity Essentials',
+    issuer: 'Google Workspace Training',
+    date: '2024',
+    image: 'assets/canva-essentials.png',
+    tag: 'CLOUD PRODUCTIVITY',
+    description: 'Proficiency in cloud collaboration tools, document workflow automation, spreadsheet modeling, and enterprise productivity software.'
+  },
+  'cisco-cyber': {
+    title: 'Cisco: Introduction to Cybersecurity & Threat Management',
+    issuer: 'Cisco Networking Academy',
+    date: '2024',
+    image: 'assets/cisco-cyber-threat.png',
+    tag: 'CYBERSECURITY',
+    description: 'Comprehensive training in network security fundamentals, cyber defense principles, threat prevention strategies, and data protection integrity.'
+  },
+  'canva-design': {
+    title: 'Canva Graphic Design Essentials',
+    issuer: 'Canva Design Academy',
+    date: '2023',
+    image: 'assets/canva-graphic-design.png',
+    tag: 'GRAPHIC DESIGN & BRANDING',
+    description: 'Specialized certification in visual communication, branding asset creation, digital typography, color harmony, and marketing layout composition.'
+  }
+};
+
+function initCertificatesModal() {
+  const modal = document.getElementById('certificateModal');
+  const modalContent = document.getElementById('certModalContent');
+  const closeBtn = document.getElementById('closeCertModalBtn');
+  const certRows = document.querySelectorAll('.interactive-cert-row');
+
+  const openCertModal = (certKey) => {
+    const cert = CERTIFICATES_DATABASE[certKey];
+    if (!cert || !modalContent) return;
+
+    modalContent.innerHTML = `
+      <div class="modal-cert-header">
+        <span class="modal-cert-tag">${cert.tag} • ${cert.date}</span>
+        <h2 class="modal-cert-title">${cert.title}</h2>
+        <span class="modal-cert-issuer">${cert.issuer}</span>
+      </div>
+      <div class="modal-cert-img-wrap">
+        <img src="${cert.image}" alt="${cert.title}" class="modal-cert-img">
+      </div>
+      <p class="modal-cert-desc">${cert.description}</p>
+      <div class="modal-cert-folder-tabs">
+        ${Object.keys(CERTIFICATES_DATABASE).map(k => `
+          <button class="cert-folder-tab-pill ${k === certKey ? 'active' : ''}" data-folder-key="${k}">
+            ${CERTIFICATES_DATABASE[k].title.split('&')[0].trim()}
+          </button>
+        `).join('')}
+      </div>
+    `;
+
+    // Folder tab switching inside modal
+    modalContent.querySelectorAll('.cert-folder-tab-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.folderKey;
+        openCertModal(key);
+      });
+    });
+
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeCertModal = () => {
+    if (modal) modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  certRows.forEach(row => {
+    row.addEventListener('click', () => {
+      const certId = row.dataset.certId;
+      if (certId) openCertModal(certId);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeCertModal);
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeCertModal();
+    });
+  }
 }

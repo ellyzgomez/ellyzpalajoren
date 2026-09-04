@@ -281,28 +281,53 @@
           <h3 class="credential-box-heading">Certificates</h3>
           <div class="credential-entries-list">
             
-            <div class="credential-entry-row">
-              <span class="entry-main-text">UI/UX Fundamentals</span>
+            <div class="credential-entry-row interactive-cert-row" data-cert-id="ui-ux" title="Click to view certificate">
+              <div class="entry-cert-title-group">
+                <svg class="cert-folder-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+                </svg>
+                <span class="entry-main-text">UI/UX Fundamentals</span>
+              </div>
               <span class="entry-date-badge">2025</span>
             </div>
 
-            <div class="credential-entry-row">
-              <span class="entry-main-text">Responsive Web Design</span>
+            <div class="credential-entry-row interactive-cert-row" data-cert-id="responsive-web" title="Click to view certificate">
+              <div class="entry-cert-title-group">
+                <svg class="cert-folder-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+                </svg>
+                <span class="entry-main-text">Responsive Web Design</span>
+              </div>
               <span class="entry-date-badge">2024</span>
             </div>
 
-            <div class="credential-entry-row">
-              <span class="entry-main-text">Google Workspace Essentials</span>
+            <div class="credential-entry-row interactive-cert-row" data-cert-id="google-workspace" title="Click to view certificate">
+              <div class="entry-cert-title-group">
+                <svg class="cert-folder-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+                </svg>
+                <span class="entry-main-text">Google Workspace Essentials</span>
+              </div>
               <span class="entry-date-badge">2024</span>
             </div>
 
-            <div class="credential-entry-row">
-              <span class="entry-main-text">Cisco Introduction to Cybersecurity</span>
+            <div class="credential-entry-row interactive-cert-row" data-cert-id="cisco-cyber" title="Click to view certificate">
+              <div class="entry-cert-title-group">
+                <svg class="cert-folder-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+                </svg>
+                <span class="entry-main-text">Cisco Introduction to Cybersecurity</span>
+              </div>
               <span class="entry-date-badge">2024</span>
             </div>
 
-            <div class="credential-entry-row">
-              <span class="entry-main-text">Canva Graphic Design Essentials</span>
+            <div class="credential-entry-row interactive-cert-row" data-cert-id="canva-design" title="Click to view certificate">
+              <div class="entry-cert-title-group">
+                <svg class="cert-folder-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+                </svg>
+                <span class="entry-main-text">Canva Graphic Design Essentials</span>
+              </div>
               <span class="entry-date-badge">2023</span>
             </div>
 
@@ -410,6 +435,19 @@
         </svg>
       </button>
       <div class="case-study-body" id="caseStudyModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Interactive Certificate Viewer Modal -->
+  <div class="modal-backdrop-blur" id="certificateModal" aria-hidden="true" role="dialog">
+    <div class="modal-glass-container certificate-viewer-dialog">
+      <button class="modal-glass-close-btn" id="closeCertModalBtn" aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="cert-modal-body" id="certModalContent"></div>
     </div>
   </div>
 
