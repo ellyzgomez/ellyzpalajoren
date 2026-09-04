@@ -456,29 +456,37 @@ body.social-portfolio-theme {
 
 .card-cv-action-row {
   width: 100%;
-  margin-bottom: 16px;
+  margin-top: 14px;
+  margin-bottom: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: center;
 }
 
 .btn-inline-cv {
+  width: 100%;
   background: var(--bg-frame);
   border: 1px solid var(--border-dark);
   color: var(--pink-hot);
   font-family: var(--font-serif);
   font-size: 12px;
   font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   transition: var(--transition-fast);
 }
 
 .btn-inline-cv:hover {
-  background: rgba(255, 105, 180, 0.15);
-  border-color: var(--pink-hot);
-  color: var(--text-pure);
+  background: var(--pink-gradient);
+  border-color: transparent;
+  color: #000000;
+  box-shadow: 0 4px 14px var(--pink-glow);
   transform: translateY(-1px);
 }
 
