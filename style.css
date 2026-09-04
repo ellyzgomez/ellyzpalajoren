@@ -584,9 +584,17 @@ body.social-portfolio-theme {
 
 .profile-header-main-row {
   display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 0;
+}
+
+.profile-avatar-social-col {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 12px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .profile-main-avatar-wrap {
@@ -594,9 +602,9 @@ body.social-portfolio-theme {
 }
 
 .avatar-ring-large {
-  width: 86px;
-  height: 86px;
-  border-radius: 16px;
+  width: 90px;
+  height: 90px;
+  border-radius: 18px;
   padding: 3px;
   background: var(--pink-gradient);
   box-shadow: 0 0 20px var(--pink-glow);
@@ -609,48 +617,53 @@ body.social-portfolio-theme {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 13px;
+  border-radius: 15px;
   background: var(--bg-frame);
 }
 
 .profile-main-text-col {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px; /* Ibaba nang kaunti ang name para perfectly aligned sa avatar */
 }
 
 .profile-title-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .profile-hero-name {
   font-family: var(--font-serif);
-  font-size: 1.65rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: var(--text-pure);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 .profile-hero-bio {
-  font-size: 0.9rem;
+  font-size: 0.94rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* Center Profile Connect Bar */
 .profile-connect-block {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  margin-top: 8px;
+  justify-content: center;
+  width: 100%;
 }
 
 .center-social-matrix {
   display: flex;
   align-items: center;
-  gap: 8px;
-  width: auto;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
 }
 
 .center-social-matrix .social-matrix-btn {
