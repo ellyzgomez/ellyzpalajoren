@@ -1,10 +1,11 @@
 /**
- * Ellyz Gomez — Portfolio JavaScript
- * Handles navigation, drawer, cursor, case study modal, and toasts.
+ * Ellyz Gomez — Portfolio Master JavaScript
+ * Handles Theme Management, Project Case Studies, Story Highlights,
+ * Interactive 3D Certificate Stack, Navigation ScrollSpy, Form Submissions, and Social Actions.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Dark / Light Mode Theme Initializer
+  // 1. Initialize Theme Switcher
   initThemeToggle();
 
   // 2. Initialize Lucide Icons
@@ -12,166 +13,569 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
   }
 
-  // 3. Navigation Drawer & ScrollSpy
+  // 3. Initialize Core Interactive Components
+  initProjectModals();
+  initStoryViewer();
   initNavigation();
-
-  // 4. Resume Button Handler
-  initResumeButton();
-
-  // 5. React Bits Stack Component for Certificates
+  initSocialInteractions();
   initCertificatesStack();
-
-  // 6. Contact Form Handler (Direct delivery to ellyzpalajoren62@gmail.com)
+  initResumeButtons();
   initContactForm();
 });
 
 /* --------------------------------------------------------------------------
-   3. Navigation (Header Menu, ScrollSpy, Drawer)
+   1. THEME SWITCHER (Dark / Light Mode with LocalStorage Persistence)
    -------------------------------------------------------------------------- */
-function initNavigation() {
-  const toggleBtn = document.getElementById('menuToggleBtn');
-  const drawerOverlay = document.getElementById('navDrawerOverlay');
-  const drawer = document.getElementById('navDrawer');
-  const closeBtn = document.getElementById('drawerCloseBtn');
-  const drawerLinks = document.querySelectorAll('.drawer-link');
-  const navMenuLinks = document.querySelectorAll('.nav-menu-link');
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('headerThemeToggle');
+  const savedTheme = localStorage.getItem('ellyz-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
 
-  if (toggleBtn && drawerOverlay && drawer) {
-    const openDrawer = () => {
-      drawerOverlay.classList.add('active');
-      drawer.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    };
-
-    const closeDrawer = () => {
-      drawerOverlay.classList.remove('active');
-      drawer.classList.remove('active');
-      document.body.style.overflow = '';
-    };
-
-    toggleBtn.addEventListener('click', openDrawer);
-    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-
-    drawerOverlay.addEventListener('click', closeDrawer);
-
-    drawerLinks.forEach((link) => {
-      link.addEventListener('click', closeDrawer);
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && drawer.classList.contains('active')) {
-        closeDrawer();
-      }
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const nextTheme = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('ellyz-theme', nextTheme);
+      showToast(`✓ Switched to ${nextTheme === 'dark' ? 'Dark' : 'Light'} Mode`);
     });
   }
-
-  // ScrollSpy Active Link Tracking
-  const sections = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollPosition = window.scrollY + 200;
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navMenuLinks.forEach((link) => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
 }
 
 /* --------------------------------------------------------------------------
-   4. Download Resume Button Handler
+   2. PROJECT DATABASE & CASE STUDY MODAL HANDLER
    -------------------------------------------------------------------------- */
-function initResumeButton() {
-  const resumeBtns = [
-    document.getElementById('downloadResumeBtn'),
-    document.getElementById('drawerDownloadResumeBtn')
-  ];
+const PROJECTS_DATABASE = {
+  'chic-wear': {
+    title: 'Chic Wear E-commerce',
+    category: 'Branding & UI / Web Application',
+    image: 'assets/project_chic_wear.jpg',
+    likes: '4.1k',
+    comments: '289',
+    tags: ['#Figma', '#HTML5/CSS3', '#Branding', '#ECommerce', '#ResponsiveDesign'],
+    description: `A high-end editorial fashion e-commerce interface and brand identity designed for luxury boutique retail. Features intuitive category filtering, elegant micro-interactions, responsive grid layout, and seamless cart & checkout prototypes.`,
+    prototypeUrl: 'https://github.com/ellyzgomez',
+    sourceUrl: 'https://github.com/ellyzgomez'
+  },
+  'zenith-health': {
+    title: 'Zenith Health App',
+    category: 'App Design / Healthcare UI/UX',
+    image: 'assets/project_zenith_health.jpg',
+    likes: '3.5k',
+    comments: '198',
+    tags: ['#MobileUI', '#UIUX', '#HealthTech', '#Figma', '#React'],
+    description: `A modern mobile health & wellness dashboard app. Features real-time vitals tracking (Heart Rate, Blood Pressure, Steps, Sleep analytics), personalized wellness score calculations, and clean visual data charts for patients and doctors.`,
+    prototypeUrl: 'https://github.com/ellyzgomez',
+    sourceUrl: 'https://github.com/ellyzgomez'
+  },
+  'aria-music': {
+    title: 'Aria Music Platform',
+    category: 'Streaming UI / Audio Visualizer',
+    image: 'assets/project_aria_music.jpg',
+    likes: '5.2k',
+    comments: '340',
+    tags: ['#MusicPlayer', '#DarkMode', '#AudioVisualizer', '#UIUX', '#WebAudio'],
+    description: `An immersive dark mode audio streaming platform with real-time waveform visualizers, dynamic track queue management, playlist curation, and synchronized lyrics support.`,
+    prototypeUrl: 'https://github.com/ellyzgomez',
+    sourceUrl: 'https://github.com/ellyzgomez'
+  },
+  'bloom-branding': {
+    title: 'Bloom Cosmetics',
+    category: 'Brand Identity & Packaging',
+    image: 'assets/project_bloom_branding.jpg',
+    likes: '2.8k',
+    comments: '112',
+    tags: ['#BrandIdentity', '#Typography', '#Packaging', '#Canva', '#Photoshop'],
+    description: `Comprehensive brand identity design and sustainable packaging system for Bloom Cosmetics. Includes embossed business cards, stationery, product packaging, and cohesive color harmony.`,
+    prototypeUrl: 'https://github.com/ellyzgomez',
+    sourceUrl: 'https://github.com/ellyzgomez'
+  },
+  'echo-podcast': {
+    title: 'Echo Podcast Player',
+    category: 'Mobile Application UI/UX',
+    image: 'assets/project_echo_podcast.jpg',
+    likes: '3.1k',
+    comments: '175',
+    tags: ['#PodcastApp', '#AudioStreaming', '#Prototyping', '#Figma', '#MobileUI'],
+    description: `An intuitive podcast discovery and player application with dark purple gradient themes, episode chapter bookmarks, audio speed controls, and interactive creator profiles.`,
+    prototypeUrl: 'https://github.com/ellyzgomez',
+    sourceUrl: 'https://github.com/ellyzgomez'
+  },
+  'luxe-interior': {
+    title: 'Luxe Interior Architecture',
+    category: 'Architectural Web Design & Spatial Systems',
+    image: 'assets/project_luxe_interior.jpg',
+    likes: '4.6k',
+    comments: '312',
+    tags: ['#InteriorDesign', '#Architecture', '#WebDesign', '#CSSGrid', '#Minimalism'],
+    description: `A minimalist luxury interior architecture portfolio showcasing spatial living room designs, curated bespoke furniture, and smooth editorial galleries.`,
+    prototypeUrl: 'https://github.com/ellyzgomez',
+    sourceUrl: 'https://github.com/ellyzgomez'
+  },
+  'veridia-fintech': {
+    title: 'Veridia FinTech Mobile',
+    category: 'FinTech & Investment Dashboard',
+    image: 'assets/project_veridia_campaign.jpg',
+    likes: '6.3k',
+    comments: '420',
+    tags: ['#FinTech', '#Crypto', '#InvestmentApp', '#Dashboard', '#UIUX'],
+    description: `A high-performance crypto and stock portfolio management mobile application. Features live candlestick charting, asset distribution breakdown, and instant transaction flows.`,
+    prototypeUrl: 'https://github.com/ellyzgomez',
+    sourceUrl: 'https://github.com/ellyzgomez'
+  },
+  'cisco-networking': {
+    title: 'Cisco Packet Tracer Suite',
+    category: 'Networking Architecture & Cyber Defense',
+    image: 'assets/cisco-packet-tracer.png',
+    likes: '2.9k',
+    comments: '142',
+    tags: ['#Cisco', '#PacketTracer', '#CyberSecurity', '#Subnetting', '#Networking'],
+    description: `Comprehensive multi-router network topology and cybersecurity framework engineered in Cisco Packet Tracer. Features VLAN segmentation, ACL firewall rules, and threat mitigation.`,
+    prototypeUrl: 'https://github.com/ellyzgomez',
+    sourceUrl: 'https://github.com/ellyzgomez'
+  }
+};
 
-  resumeBtns.forEach((btn) => {
-    if (btn) {
-      btn.addEventListener('click', (e) => {
-        if (e) e.preventDefault();
-        
-        // Automatic download from the Resume folder (.docx)
-        const link = document.createElement('a');
-        link.href = 'Resume/Ellyz Gomez Resume.docx';
-        link.download = 'Ellyz Gomez Resume.docx';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        showToast('✓ Downloading Ellyz Gomez Resume (.docx)...');
+function initProjectModals() {
+  const modal = document.getElementById('projectModal');
+  const modalContent = document.getElementById('caseStudyModalContent');
+  const closeBtn = document.getElementById('closeProjectModalBtn');
+  const projectCards = document.querySelectorAll('.feed-project-card');
+
+  const openProjectModal = (projectId) => {
+    const project = PROJECTS_DATABASE[projectId];
+    if (!project || !modalContent) return;
+
+    modalContent.innerHTML = `
+      <div class="case-study-hero-img-wrap">
+        <img src="${project.image}" alt="${project.title}" class="case-study-hero-img">
+      </div>
+      <div class="case-study-meta-head">
+        <span class="dialog-badge">${project.category}</span>
+        <h2 class="case-study-title">${project.title}</h2>
+        <div class="case-study-tags-row">
+          ${project.tags.map(tag => `<span class="cs-tag-chip">${tag}</span>`).join('')}
+        </div>
+      </div>
+      <p class="case-study-desc-text">${project.description}</p>
+      <div class="case-study-buttons-row">
+        <a href="${project.prototypeUrl}" target="_blank" rel="noopener noreferrer" class="btn-cs-action primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span>View Live Prototype</span>
+        </a>
+        <a href="${project.sourceUrl}" target="_blank" rel="noopener noreferrer" class="btn-cs-action">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span>Source Code</span>
+        </a>
+      </div>
+    `;
+
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeProjectModal = () => {
+    if (modal) modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  projectCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.like-btn')) return;
+      const projectId = card.dataset.projectId;
+      openProjectModal(projectId);
+    });
+  });
+
+  // Activity Feed Clicks
+  const activityItems = document.querySelectorAll('.activity-item-row');
+  activityItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const trigger = item.dataset.projectTrigger;
+      if (trigger) openProjectModal(trigger);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeProjectModal);
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeProjectModal();
+    });
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. STORY HIGHLIGHT VIEWER
+   -------------------------------------------------------------------------- */
+const STORY_DATA = {
+  'design-projects': {
+    title: 'Design Projects & Wireframes',
+    slides: [
+      {
+        image: 'assets/story_wireframes_preview.jpg',
+        caption: 'Behind-the-Scenes: Figma design system components, layout grids, and user flow schematics.'
+      },
+      {
+        image: 'assets/project_chic_wear.jpg',
+        caption: 'Chic Wear E-commerce: Responsive high-fidelity layout prototype.'
+      },
+      {
+        image: 'assets/project_zenith_health.jpg',
+        caption: 'Zenith Health: Interactive mobile screen architecture & vitals analytics.'
+      }
+    ]
+  },
+  'awards': {
+    title: 'Academic & Project Recognitions',
+    slides: [
+      {
+        image: 'assets/certificate-preview.jpg',
+        caption: 'Quezon City University: Academic Excellence in Information Technology & Systems Engineering.'
+      },
+      {
+        image: 'assets/canva-essentials.png',
+        caption: 'Canva Certified Design Specialist • Graphic Design & Visual Communication.'
+      }
+    ]
+  },
+  'about-me': {
+    title: 'About Ellyz Gomez',
+    slides: [
+      {
+        image: 'assets/hero-portrait.png',
+        caption: '4th Year IT Student at Quezon City University • Specializing in UI/UX & Web Development.'
+      },
+      {
+        image: 'assets/story_wireframes_preview.jpg',
+        caption: 'Crafting user-centered interfaces with Figma, modern JavaScript, and clean CSS.'
+      }
+    ]
+  },
+  'certificates': {
+    title: 'Verified Certificates',
+    slides: [
+      {
+        image: 'assets/cisco-packet-tracer.png',
+        caption: 'Cisco Networking Academy • Getting Started with Cisco Packet Tracer.'
+      },
+      {
+        image: 'assets/cisco-cyber-threat.png',
+        caption: 'Cisco Networking Academy • Cyber Threat Management Certified.'
+      },
+      {
+        image: 'assets/canva-graphic-design.png',
+        caption: 'Canva Design School • Graphic Design Essentials Certificate.'
+      }
+    ]
+  },
+  'skills': {
+    title: 'Skills Matrix',
+    slides: [
+      {
+        image: 'assets/story_wireframes_preview.jpg',
+        caption: 'Development: HTML5, CSS3, JavaScript, React, Node.js, PHP, Python, SQL.'
+      },
+      {
+        image: 'assets/cisco-packet-tracer.png',
+        caption: 'Design & Tools: Canva, Video Editing, Microsoft Office, Google Workspace, Troubleshooting.'
+      }
+    ]
+  },
+  'behind-the-scenes': {
+    title: 'Behind The Scenes Workflow',
+    slides: [
+      {
+        image: 'assets/story_wireframes_preview.jpg',
+        caption: 'Initial low-fidelity wireframes and user journey mapping.'
+      },
+      {
+        image: 'assets/project_aria_music.jpg',
+        caption: 'Polishing dark mode contrast, glowing visualizers, and responsive cards.'
+      }
+    ]
+  }
+};
+
+function initStoryViewer() {
+  const storyModal = document.getElementById('storyViewerModal');
+  const storyCategoryTitle = document.getElementById('storyCategoryTitle');
+  const storyViewport = document.getElementById('storySlideViewport');
+  const closeStoryBtn = document.getElementById('closeStoryViewerBtn');
+  const prevBtn = document.getElementById('storyPrevBtn');
+  const nextBtn = document.getElementById('storyNextBtn');
+  const storyItems = document.querySelectorAll('.story-highlight-item');
+
+  let currentCategory = 'design-projects';
+  let currentSlideIndex = 0;
+  let storyTimer = null;
+
+  const renderSlide = () => {
+    const story = STORY_DATA[currentCategory];
+    if (!story || !story.slides[currentSlideIndex]) return;
+
+    const slide = story.slides[currentSlideIndex];
+    if (storyCategoryTitle) storyCategoryTitle.textContent = story.title;
+
+    if (storyViewport) {
+      storyViewport.innerHTML = `
+        <div style="position: relative; width: 100%; height: 100%;">
+          <img src="${slide.image}" alt="${story.title}" class="story-slide-img">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 18px 20px; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);">
+            <p style="font-size: 0.82rem; color: #fff; line-height: 1.4; text-shadow: 0 1px 4px rgba(0,0,0,0.8);">${slide.caption}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    // Update Progress Bars
+    const progressBar = document.getElementById('storyProgressBar');
+    if (progressBar) {
+      progressBar.innerHTML = story.slides.map((_, idx) => `
+        <div class="story-progress-segment ${idx === currentSlideIndex ? 'active' : ''}"></div>
+      `).join('');
+    }
+
+    // Auto Advance after 5 seconds
+    if (storyTimer) clearTimeout(storyTimer);
+    storyTimer = setTimeout(() => {
+      if (currentSlideIndex < story.slides.length - 1) {
+        currentSlideIndex++;
+        renderSlide();
+      } else {
+        closeStory();
+      }
+    }, 5000);
+  };
+
+  const openStory = (categoryKey) => {
+    currentCategory = categoryKey;
+    currentSlideIndex = 0;
+    renderSlide();
+    if (storyModal) storyModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeStory = () => {
+    if (storyTimer) clearTimeout(storyTimer);
+    if (storyModal) storyModal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  storyItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const key = item.dataset.story;
+      openStory(key);
+    });
+  });
+
+  if (closeStoryBtn) closeStoryBtn.addEventListener('click', closeStory);
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+        renderSlide();
+      }
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const story = STORY_DATA[currentCategory];
+      if (story && currentSlideIndex < story.slides.length - 1) {
+        currentSlideIndex++;
+        renderSlide();
+      } else {
+        closeStory();
+      }
+    });
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. SMOOTH NAVIGATION & ACTIVE SCROLLSPY
+   -------------------------------------------------------------------------- */
+function initNavigation() {
+  // Smooth scroll with sticky header offset for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#' || !targetId) return;
+
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        const headerOffset = 68;
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        // Close mobile menu if active
+        const navMenu = document.querySelector('.center-nav-links');
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        if (navMenu && navMenu.classList.contains('mobile-active')) {
+          navMenu.classList.remove('mobile-active');
+          if (menuBtn) menuBtn.classList.remove('open');
+        }
+      }
+    });
+  });
+
+  // ScrollSpy to highlight active nav link
+  const sections = document.querySelectorAll('.feed-section-block');
+  const navLinks = document.querySelectorAll('.center-nav-links .nav-item-link');
+
+  const onScroll = () => {
+    let currentSectionId = 'home';
+    const scrollPos = window.scrollY + 100;
+
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        currentSectionId = sec.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${currentSectionId}`) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const centerNav = document.querySelector('.center-nav-links');
+  if (mobileMenuBtn && centerNav) {
+    mobileMenuBtn.addEventListener('click', () => {
+      centerNav.classList.toggle('mobile-active');
+      mobileMenuBtn.classList.toggle('open');
+    });
+  }
+
+  // Global Escape Key to close open modals
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-backdrop-blur.active').forEach(m => {
+        m.classList.remove('active');
       });
+      document.body.style.overflow = '';
     }
   });
 }
 
 /* --------------------------------------------------------------------------
-   5. React Bits <Stack /> Component for Certificates
+   5. SOCIAL INTERACTIONS (Likes, Follows, Shares)
+   -------------------------------------------------------------------------- */
+function initSocialInteractions() {
+  // Likes
+  const likeButtons = document.querySelectorAll('.like-btn');
+  likeButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isLiked = btn.classList.toggle('is-liked');
+      if (isLiked) {
+        showToast('❤️ You liked this project!');
+      }
+    });
+  });
+
+  // Follow buttons
+  const followButtons = [
+    document.getElementById('leftFollowBtn'),
+    ...document.querySelectorAll('.btn-mini-follow')
+  ];
+
+  followButtons.forEach(btn => {
+    if (!btn) return;
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isFollowing = btn.classList.toggle('is-following');
+      const textEl = btn.querySelector('.follow-text') || btn.querySelector('.btn-text');
+
+      if (isFollowing) {
+        if (textEl) textEl.textContent = 'Following ✓';
+        else btn.textContent = 'Following ✓';
+        showToast('✓ Following @ellyzcreative');
+      } else {
+        if (textEl) textEl.textContent = 'Follow';
+        else btn.textContent = 'Follow';
+        showToast('Unfollowed @ellyzcreative');
+      }
+    });
+  });
+
+  // Message pill button scrolls smoothly to Contact form
+  const leftMsgBtn = document.getElementById('leftMessageBtn');
+  if (leftMsgBtn) {
+    leftMsgBtn.addEventListener('click', () => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+        const nameInput = document.getElementById('contactName');
+        if (nameInput) setTimeout(() => nameInput.focus(), 600);
+      }
+    });
+  }
+
+  // Share button
+  const shareBtn = document.getElementById('leftShareBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href);
+        showToast('🔗 Portfolio link copied to clipboard!');
+      } else {
+        showToast('🔗 Share URL: ' + window.location.href);
+      }
+    });
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. 3D CERTIFICATE STACK (React Bits 3D Stack Component)
    -------------------------------------------------------------------------- */
 const CERTIFICATES_DATA = [
   {
     id: 1,
     image: 'assets/canva-essentials.png',
-    alt: 'Canva Essentials Certificate of Completion',
     title: 'Canva Essentials',
-    tag: 'DESIGN & VISUAL CREATION',
-    issuer: 'Canva Design School • The Canva Team',
-    date: 'August 21, 2026',
-    year: '2026',
-    certId: 'c701b2'
+    tag: 'DESIGN & VISUAL CREATION'
   },
   {
     id: 2,
     image: 'assets/canva-graphic-design.png',
-    alt: 'Graphic Design Essentials Certificate of Completion',
     title: 'Graphic Design Essentials',
-    tag: 'GRAPHIC DESIGN & CREATIVE',
-    issuer: 'Canva Design School • The Canva Team',
-    date: 'August 21, 2026',
-    year: '2026',
-    certId: 'aba828'
+    tag: 'GRAPHIC DESIGN & CREATIVE'
   },
   {
     id: 3,
     image: 'assets/cisco-cyber-threat.png',
-    alt: 'Cyber Threat Management Certificate',
     title: 'Cyber Threat Management',
-    tag: 'CYBERSECURITY',
-    issuer: 'Cisco Networking Academy • Lynn Bloomer, Director',
-    date: '13 Jun 2025',
-    year: '2025'
+    tag: 'CYBERSECURITY'
   },
   {
     id: 4,
     image: 'assets/cisco-packet-tracer.png',
-    alt: 'Getting Started with Cisco Packet Tracer Certificate',
     title: 'Getting Started with Cisco Packet Tracer',
-    tag: 'SIMULATION & TOOLS',
-    issuer: 'Cisco Networking Academy • Lynn Bloomer, Director',
-    date: '09 Jun 2025',
-    year: '2025',
-    certId: '6e950d61-796d-4155-9a10-dfde0a3b6934'
+    tag: 'SIMULATION & TOOLS'
   },
   {
     id: 5,
     image: 'assets/cisco-network-addressing.png',
-    alt: 'Network Addressing & Basic Troubleshooting Certificate',
     title: 'Network Addressing and Basic Troubleshooting',
-    tag: 'NETWORKING & TROUBLESHOOTING',
-    issuer: 'Cisco Networking Academy • Lynn Bloomer, Director',
-    date: 'May 31, 2025',
-    year: '2025'
+    tag: 'NETWORKING & TROUBLESHOOTING'
   }
 ];
 
@@ -182,32 +586,16 @@ class ReactBitsStack {
 
     this.options = {
       randomRotation: options.randomRotation ?? true,
-      sensitivity: options.sensitivity ?? 110,
-      sendToBackOnClick: options.sendToBackOnClick ?? true,
-      animationConfig: options.animationConfig || { stiffness: 260, damping: 20 },
-      autoplay: options.autoplay ?? false,
-      autoplayDelay: options.autoplayDelay || 3200,
-      pauseOnHover: options.pauseOnHover ?? true,
-      mobileBreakpoint: options.mobileBreakpoint || 768,
       cards: options.cards || CERTIFICATES_DATA
     };
 
-    // Initialize stack array with persistent unique IDs and randomized rotation offsets
     this.stack = this.options.cards.map((card, idx) => ({
       ...card,
       id: card.id || idx + 1,
       randomRotate: this.options.randomRotation ? (Math.random() * 8 - 4) : 0
     }));
 
-    this.isPaused = false;
-    this.autoplayInterval = null;
-    this.hoverInterval = null;
-    this.isDragging = false;
-    this.dragPointerId = null;
-    this.dragStart = { x: 0, y: 0 };
-    this.currentOffset = { x: 0, y: 0 };
-    this.cardElements = new Map(); // id -> DOM container (.card-rotate)
-
+    this.cardElements = new Map();
     this.init();
   }
 
@@ -215,21 +603,19 @@ class ReactBitsStack {
     this.buildDOM();
     this.bindEvents();
     this.updateStackPositions(false);
-    this.initAutoplay();
   }
 
   buildDOM() {
     this.container.innerHTML = '';
-
     this.stack.forEach((card) => {
       const rotateWrapper = document.createElement('div');
       rotateWrapper.className = 'card-rotate';
       rotateWrapper.dataset.cardId = card.id;
 
       rotateWrapper.innerHTML = `
-        <div class="card" style="transform-origin: 90% 90%;">
+        <div class="card">
           <div class="card-image-wrap">
-            <img src="${card.image}" alt="${card.alt || card.title}" class="card-image" draggable="false" />
+            <img src="${card.image}" alt="${card.title}" class="card-image" draggable="false" />
           </div>
         </div>
       `;
@@ -239,25 +625,16 @@ class ReactBitsStack {
     });
   }
 
-  getTopCard() {
-    return this.stack[this.stack.length - 1];
-  }
-
   updateStackPositions(animate = true) {
     const total = this.stack.length;
-    const duration = animate ? 0.45 : 0;
+    const duration = animate ? 0.4 : 0;
     const ease = "power2.out";
 
     this.stack.forEach((card, index) => {
       const el = this.cardElements.get(card.id);
       if (!el) return;
 
-      const isTop = index === total - 1;
-      const depth = total - index - 1; // 0 for top card, 1 for next, etc.
-      
-      // Calculate transforms according to React Bits Stack formula:
-      // rotateZ: (stack.length - index - 1) * 4 + randomRotate
-      // scale: 1 + index * 0.06 - stack.length * 0.06
+      const depth = total - index - 1;
       const rotateZ = depth * 3.5 + card.randomRotate;
       const scale = 1 - depth * 0.045;
       const yOffset = depth * 4;
@@ -266,21 +643,12 @@ class ReactBitsStack {
 
       el.style.zIndex = zIndex;
 
-      if (isTop) {
-        el.classList.remove('card-rotate-disabled');
-        el.style.pointerEvents = 'auto';
-      } else {
-        el.style.pointerEvents = 'auto';
-      }
-
       if (window.gsap) {
         gsap.to(el, {
           x: xOffset,
           y: yOffset,
           scale: scale,
           rotateZ: rotateZ,
-          rotateX: 0,
-          rotateY: 0,
           opacity: depth > 3 ? 0.4 : 1,
           duration: duration,
           ease: ease,
@@ -288,35 +656,27 @@ class ReactBitsStack {
         });
       } else {
         el.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0) scale(${scale}) rotateZ(${rotateZ}deg)`;
-        el.style.transition = animate ? 'transform 0.45s ease-out' : 'none';
       }
     });
   }
 
-  sendToBack(cardId, flingDirection = 1) {
-    const targetId = cardId !== undefined ? cardId : this.getTopCard()?.id;
-    if (targetId === undefined) return;
+  sendToBack() {
+    if (this.stack.length <= 1) return;
+    const topCard = this.stack[this.stack.length - 1];
+    const topEl = this.cardElements.get(topCard.id);
 
-    const index = this.stack.findIndex((c) => c.id === targetId);
-    if (index === -1) return;
+    const [card] = this.stack.splice(this.stack.length - 1, 1);
+    this.stack.unshift(card);
 
-    const topEl = this.cardElements.get(targetId);
-    const [card] = this.stack.splice(index, 1);
-    this.stack.unshift(card); // Move to bottom of stack
-
-    // Smooth throw & return-to-back animation
     if (topEl && window.gsap) {
-      const flyX = flingDirection * (window.innerWidth < 768 ? 200 : 320);
-      const flyRotate = flingDirection * 20;
-
       gsap.timeline()
         .to(topEl, {
-          x: flyX,
+          x: 240,
           y: -20,
-          rotateZ: flyRotate,
-          opacity: 0.6,
+          rotateZ: 15,
+          opacity: 0.5,
           scale: 0.95,
-          duration: 0.22,
+          duration: 0.2,
           ease: "power2.in"
         })
         .set(topEl, {
@@ -335,284 +695,41 @@ class ReactBitsStack {
     }
   }
 
-  bringPrevious() {
-    if (this.stack.length <= 1) return;
-
-    // Pop the bottom card and place it at the top
-    const card = this.stack.shift();
-    this.stack.push(card);
-
-    const topEl = this.cardElements.get(card.id);
-    if (topEl && window.gsap) {
-      topEl.style.zIndex = this.stack.length + 10;
-      gsap.fromTo(topEl, 
-        { x: -260, y: -30, rotateZ: -15, opacity: 0.5, scale: 0.9 },
-        {
-          x: 0,
-          y: 0,
-          rotateZ: card.randomRotate,
-          opacity: 1,
-          scale: 1,
-          duration: 0.4,
-          ease: "back.out(1.4)",
-          onComplete: () => {
-            this.updateStackPositions(true);
-          }
-        }
-      );
-    } else {
-      this.updateStackPositions(true);
-    }
-  }
-
   bindEvents() {
-    let startX = 0;
-    let startY = 0;
-    let deltaX = 0;
-    let deltaY = 0;
-    let isClick = true;
-
-    const onPointerDown = (e) => {
-      const topCard = this.getTopCard();
-      if (!topCard) return;
-
-      const topEl = this.cardElements.get(topCard.id);
-      if (!topEl || !topEl.contains(e.target)) return;
-
-      if (this.hoverInterval) {
-        clearInterval(this.hoverInterval);
-        this.hoverInterval = null;
-      }
-
-      this.isDragging = true;
-      this.dragPointerId = e.pointerId;
-      startX = e.clientX;
-      startY = e.clientY;
-      deltaX = 0;
-      deltaY = 0;
-      isClick = true;
-
-      topEl.classList.add('is-dragging');
-      topEl.setPointerCapture(e.pointerId);
-    };
-
-    const onPointerMove = (e) => {
-      if (!this.isDragging || e.pointerId !== this.dragPointerId) return;
-
-      deltaX = e.clientX - startX;
-      deltaY = e.clientY - startY;
-
-      if (Math.hypot(deltaX, deltaY) > 6) {
-        isClick = false;
-      }
-
-      const topCard = this.getTopCard();
-      const topEl = this.cardElements.get(topCard.id);
-      if (!topEl) return;
-
-      // 3D dynamic tilt calculation matching React Bits CardRotate:
-      // rotateX: transform(y, [-100, 100], [60, -60])
-      // rotateY: transform(x, [-100, 100], [-60, 60])
-      const rotX = Math.max(-30, Math.min(30, -deltaY * 0.25));
-      const rotY = Math.max(-30, Math.min(30, deltaX * 0.25));
-
-      if (window.gsap) {
-        gsap.set(topEl, {
-          x: deltaX,
-          y: deltaY,
-          rotateX: rotX,
-          rotateY: rotY,
-          rotateZ: topCard.randomRotate + deltaX * 0.05
-        });
-      } else {
-        topEl.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${topCard.randomRotate}deg)`;
-      }
-    };
-
-    const onPointerUp = (e) => {
-      if (!this.isDragging || e.pointerId !== this.dragPointerId) return;
-      this.isDragging = false;
-
-      const topCard = this.getTopCard();
-      const topEl = this.cardElements.get(topCard.id);
-      if (topEl) {
-        topEl.classList.remove('is-dragging');
-        try {
-          topEl.releasePointerCapture(e.pointerId);
-        } catch (_) {}
-      }
-
-      const distance = Math.hypot(deltaX, deltaY);
-      if (distance > this.options.sensitivity) {
-        // Dragged beyond threshold -> Send to back in drag direction
-        const flingDir = deltaX >= 0 ? 1 : -1;
-        this.sendToBack(topCard.id, flingDir);
-      } else if (isClick && this.options.sendToBackOnClick) {
-        // Simple click without drag -> Cycle to next card
-        this.sendToBack(topCard.id, 1);
-      } else {
-        // Released without threshold -> Spring back to rest position
-        this.updateStackPositions(true);
-      }
-    };
-
-    this.container.addEventListener('pointerdown', onPointerDown);
-    window.addEventListener('pointermove', onPointerMove);
-    window.addEventListener('pointerup', onPointerUp);
-    window.addEventListener('pointercancel', onPointerUp);
-
-    // Double click to open full lightbox
-    this.container.addEventListener('dblclick', () => {
-      const topCard = this.getTopCard();
-      if (topCard) openCertificateLightbox(topCard);
+    this.container.addEventListener('click', () => {
+      this.sendToBack();
     });
-
-    // Automatic Next on Mouse Hover
-    this.container.addEventListener('mouseenter', () => {
-      if (this.isDragging) return;
-
-      // 1. Advance immediately upon hovering
-      this.sendToBack(undefined, 1);
-
-      // 2. Continue advancing smoothly every 2.2s while cursor stays hovered
-      if (this.hoverInterval) clearInterval(this.hoverInterval);
-      this.hoverInterval = setInterval(() => {
-        if (!this.isDragging) {
-          this.sendToBack(undefined, 1);
-        }
-      }, 2200);
-    });
-
-    this.container.addEventListener('mouseleave', () => {
-      if (this.hoverInterval) {
-        clearInterval(this.hoverInterval);
-        this.hoverInterval = null;
-      }
-    });
-
-    // Keyboard support
-    window.addEventListener('keydown', (e) => {
-      const section = document.getElementById('certificates');
-      if (!section) return;
-      const rect = section.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight && rect.bottom > 0;
-      if (!inView) return;
-
-      if (e.key === 'ArrowRight' || e.key === ' ') {
-        e.preventDefault();
-        this.sendToBack();
-      } else if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        this.bringPrevious();
-      }
-    });
-  }
-
-  initAutoplay() {
-    if (this.autoplayInterval) clearInterval(this.autoplayInterval);
-    if (!this.options.autoplay) return;
-
-    this.autoplayInterval = setInterval(() => {
-      if (!this.isPaused && !this.isDragging) {
-        this.sendToBack(undefined, 1);
-      }
-    }, this.options.autoplayDelay);
   }
 }
 
 function initCertificatesStack() {
-  const stack = new ReactBitsStack('certificatesStack', {
+  new ReactBitsStack('certificatesStack', {
     randomRotation: true,
-    sensitivity: 100,
-    sendToBackOnClick: true,
-    autoplay: false,
-    autoplayDelay: 3200,
-    pauseOnHover: true,
     cards: CERTIFICATES_DATA
   });
+}
 
-  // Lightbox close handlers
-  const modal = document.getElementById('certLightboxModal');
-  const closeBtn = document.getElementById('closeCertLightboxBtn');
-
-  const closeCertModal = () => {
-    if (modal) modal.classList.remove('active');
-    document.body.style.overflow = '';
+/* --------------------------------------------------------------------------
+   7. RESUME DOWNLOAD HANDLER
+   -------------------------------------------------------------------------- */
+function initResumeButtons() {
+  const downloadResume = (e) => {
+    if (e) e.preventDefault();
+    const link = document.createElement('a');
+    link.href = 'Resume/Ellyz Gomez Resume.docx';
+    link.download = 'Ellyz Gomez Resume.docx';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast('✓ Downloading Ellyz Gomez Resume (.docx)...');
   };
 
-  if (closeBtn) closeBtn.addEventListener('click', closeCertModal);
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeCertModal();
-    });
-  }
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-      closeCertModal();
-    }
-  });
-}
-
-/* Lightbox Modal Opener with Zoom Toggle (Clean Image Only) */
-function openCertificateLightbox(cert) {
-  const modal = document.getElementById('certLightboxModal');
-  const modalBody = document.getElementById('certLightboxBody');
-  const screenFlash = document.getElementById('screenFlash');
-
-  if (!modal || !modalBody || !cert) return;
-
-  modalBody.innerHTML = `
-    <div class="cert-lightbox-img-wrap" title="Click to zoom in/out">
-      <img src="${cert.image}" alt="${cert.title}" class="cert-lightbox-img" id="certModalImg">
-    </div>
-  `;
-
-  // Toggle image zoom on click inside modal
-  const imgEl = document.getElementById('certModalImg');
-  if (imgEl) {
-    imgEl.addEventListener('click', () => {
-      imgEl.classList.toggle('is-zoomed');
-    });
-  }
-
-  // Screen Flash Effect
-  if (screenFlash) {
-    screenFlash.classList.add('flash-active');
-    setTimeout(() => {
-      screenFlash.classList.remove('flash-active');
-    }, 120);
-  }
-
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  const btn = document.getElementById('downloadCvLeftBtn');
+  if (btn) btn.addEventListener('click', downloadResume);
 }
 
 /* --------------------------------------------------------------------------
-   6. Toast Notifications
-   -------------------------------------------------------------------------- */
-function showToast(message) {
-  const container = document.getElementById('toastContainer');
-  if (!container) return;
-
-  const toast = document.createElement('div');
-  toast.className = 'toast-message';
-  toast.textContent = message;
-
-  container.appendChild(toast);
-
-  setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateY(10px)';
-    toast.style.transition = 'all 0.3s ease';
-    setTimeout(() => {
-      if (toast.parentNode) toast.parentNode.removeChild(toast);
-    }, 300);
-  }, 3200);
-}
-
-/* --------------------------------------------------------------------------
-   7. Contact Form Handler (Direct Delivery to ellyzpalajoren62@gmail.com)
+   8. DIRECT CONTACT FORM AJAX SUBMISSION
    -------------------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById('contactForm');
@@ -636,7 +753,6 @@ function initContactForm() {
       return;
     }
 
-    // Disable button and indicate sending
     submitBtn.disabled = true;
     const originalText = btnText ? btnText.textContent : 'SEND MESSAGE';
     if (btnText) btnText.textContent = 'SENDING MESSAGE...';
@@ -668,9 +784,8 @@ function initContactForm() {
         throw new Error(data.message || 'Submission failed');
       }
     } catch (err) {
-      console.warn('FormSubmit AJAX fallback to mailto draft:', err);
-      // Fallback: Opens pre-filled email draft to ellyzpalajoren62@gmail.com
-      const mailtoUrl = `mailto:ellyzpalajoren62@gmail.com?subject=${encodeURIComponent('Portfolio Message from ' + name)}&body=${encodeURIComponent('Sender: ' + name + ' (' + email + ')\n\nMessage:\n' + message)}`;
+      console.warn('FormSubmit AJAX fallback to mailto:', err);
+      const mailtoUrl = `mailto:ellyzpalajoren62@gmail.com?subject=${encodeURIComponent('Portfolio Inquiry from ' + name)}&body=${encodeURIComponent('Sender: ' + name + ' (' + email + ')\n\nMessage:\n' + message)}`;
       window.location.href = mailtoUrl;
       showToast('✓ Email draft prepared for ellyzpalajoren62@gmail.com');
       form.reset();
@@ -682,31 +797,24 @@ function initContactForm() {
 }
 
 /* --------------------------------------------------------------------------
-   8. Dark / Light Mode Theme Toggle
+   9. TOAST NOTIFICATION SYSTEM
    -------------------------------------------------------------------------- */
-function initThemeToggle() {
-  const toggleBtn = document.getElementById('themeToggleBtn');
-  const drawerToggleBtn = document.getElementById('drawerThemeToggleBtn');
+function showToast(message) {
+  const container = document.getElementById('toastContainer');
+  if (!container) return;
 
-  // Check saved theme or system preference
-  const savedTheme = localStorage.getItem('portfolio-theme');
-  const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  const toast = document.createElement('div');
+  toast.className = 'toast-message';
+  toast.textContent = message;
 
-  document.documentElement.setAttribute('data-theme', initialTheme);
+  container.appendChild(toast);
 
-  const toggleTheme = () => {
-    const current = document.documentElement.getAttribute('data-theme') || 'light';
-    const nextTheme = current === 'dark' ? 'light' : 'dark';
-
-    document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('portfolio-theme', nextTheme);
-
-    showToast(`✓ Switched to ${nextTheme === 'dark' ? 'Dark' : 'Light'} Mode`);
-  };
-
-  if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
-  if (drawerToggleBtn) drawerToggleBtn.addEventListener('click', toggleTheme);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    toast.style.transition = 'all 0.3s ease';
+    setTimeout(() => {
+      if (toast.parentNode) toast.parentNode.removeChild(toast);
+    }, 300);
+  }, 3200);
 }
-
-
